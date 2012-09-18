@@ -2,7 +2,6 @@
 layout: page
 title: Overview
 ---
-{% include JB/setup %}
 
 ![tiramizoo API Documentation](/assets/images/tiramizoo-logo.png "tiramizoo API Documentation")
 

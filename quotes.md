@@ -2,7 +2,6 @@
 layout: page
 title: Quotes
 ---
-{% include JB/setup %}
 
 The Quotes API provides an easy way of checking delivery prices in
 tiramizoo. You need to have a quote to create an order when using the

@@ -2,7 +2,6 @@
 layout: page
 title: Web Hooks
 ---
-{% include JB/setup %}
 
 The Tiramizoo API provides a simple way of tracking the status of orders you
 create in the API.

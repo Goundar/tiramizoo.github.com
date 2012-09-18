@@ -2,7 +2,6 @@
 layout: page
 title: Plugins for eCommerce Solutions
 ---
-{% include JB/setup %}
 
 Tiramizoo is providing plugins for easy integration of tiramizoo into
 common eCommerce solutions.

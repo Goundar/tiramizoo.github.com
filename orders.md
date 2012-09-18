@@ -2,7 +2,6 @@
 layout: page
 title: Orders
 ---
-{% include JB/setup %}
 
 Orders API provides a convenient interface to create an
 order. To create an order, you need to have a valid quote created

@@ -2,7 +2,6 @@
 layout: page
 title: Sandbox
 ---
-{% include JB/setup %}
 
 You can access [https://sandbox.tiramizoo.com](https://sandbox.tiramizoo.com) for testing purposes.
 All api requests should point to [https://api-sandbox.tiramizoo.com](https://api-sandbox.tiramizoo.com)
