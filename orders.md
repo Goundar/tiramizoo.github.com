@@ -7,7 +7,7 @@ title: Orders
 Orders API provides a convenient interface to create an
 order. To create an order, you need to have a valid quote created
 using
-[Quotes API](https://github.com/tiramizoo/dev.tiramizoo.com/blob/master/sections/quotes.md),
+[Quotes API](/quotes.html),
 and pass a few additional details.
 
 Create Order
@@ -19,8 +19,7 @@ Create Order
 POST /orders
 ```
 
-<pre>
-```json
+{% highlight javascript %}
 {
   "quote": { ... },
   "pickup": {
@@ -38,8 +37,7 @@ POST /orders
   "external_id": "123-456-789",
   "items_price": 1999
 }
-```
-</pre>
+{% endhighlight %}
 
 * `quote` - a valid, unmodified quote object fetched from
   [Quotes API](https://github.com/tiramizoo/dev.tiramizoo.com/blob/master/sections/quotes.md).
@@ -71,8 +69,7 @@ Response body contains the same information as in Show request.
 * `422 Validation Error` - some of required parameters are missing or
   invalid in the request. Please fix parameters and retry the request.
 
-<pre>
-```json
+{% highlight javascript %}
 {
   "message": "validation error",
   "code": "validation_error",
@@ -81,8 +78,7 @@ Response body contains the same information as in Show request.
     "quote has expired"
   ]
 }
-```
-</pre>
+{% endhighlight %}
 
 Show Order
 ------------
@@ -97,8 +93,7 @@ GET /orders/:order_uuid
 
 * `200 Ok` - Returns order representation.
 
-<pre>
-```json
+{% highlight javascript %}
 {
   "uuid": "b966a74b-32a0-4ade-b864-e72472230cf2",
   "state": "awaiting_payment",
@@ -118,8 +113,7 @@ GET /orders/:order_uuid
   },
   "quote": { ... }
 }
-```
-</pre>
+{% endhighlight %}
 
 #### Possible states
 
@@ -155,8 +149,7 @@ Parameters:
 
 * `200 Ok` - Returns orders list and pagination information.
 
-<pre>
-```json
+{% highlight javascript %}
 {
   "total_pages": 5,
   "per_page": 25,
@@ -165,5 +158,4 @@ Parameters:
     { ... }
   ]
 }
-```
-</pre>
+{% endhighlight %}

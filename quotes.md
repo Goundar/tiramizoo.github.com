@@ -17,8 +17,7 @@ Create a quote
 POST /quotes
 ```
 
-<pre>
-```json
+{% highlight javascript %}
 {
   "pickup": {
     "address_line_1": "Im Dol 1",
@@ -57,8 +56,7 @@ POST /quotes
     }
   ]
 }
-```
-</pre>
+{% endhighlight %}
 
 * `pickup`, `delivery` are required parameters cointaining addresses
    from where to pick your items up and where to deliver them, and
@@ -100,8 +98,7 @@ POST /quotes
 * `200 OK` - Quote(s) were created, response body contains one or more
   quotes in an Array.
 
-<pre>
-```json
+{% highlight javascript %}
 [
   {
     "pickup": {
@@ -148,8 +145,8 @@ POST /quotes
     "signature": "fdbb1f868a9cd0e01f239d2330fb133fa7cedd38"
   }
 ]
-```
-</pre>
+{% endhighlight %}
+
 
 * `pickup` and `delivery` contain nicely formatted addresses that you
   asked for, together with `lat` and `lng` coordinates. `before` and
@@ -171,8 +168,7 @@ POST /quotes
 * `422 Validation Error` - some of required parameters are missing or
   invalid in the request. Please fix parameters and retry the request.
 
-<pre>
-```json
+{% highlight javascript %}
 {
   "message": "validation error",
   "code": "validation_error",
@@ -180,65 +176,54 @@ POST /quotes
     "pickup address_line_1 is missing"
   ]
 }
-```
-</pre>
+{% endhighlight %}
 
 * `422 Geocoding Failed` - geocoding process of one given address
   failed. Ensure that the addresses are correct and try again.
 
-<pre>
-```json
+{% highlight javascript %}
 {
   "message": "geocoding failed",
   "code": "geocoding_failed"
 }
-```
-</pre>
+{% endhighlight %}
 
 * `422 No Couriers Found` - no couriers are available at given
   locations. Your area might not yet be supported by tiramizoo.
 
-<pre>
-```json
+{% highlight javascript %}
 {
   "message": "no couriers found",
   "code": "no_couriers_found"
 }
-```
-</pre>
+{% endhighlight %}
 
 * `422 Distance Too High` - no couriers at your area can handle a
   delivery with given distance.
 
-<pre>
-```json
+{% highlight javascript %}
 {
   "message": "distance too high",
   "code": "distance_too_high"
 }
-```
-</pre>
+{% endhighlight %}
 
 * `422 Item Too Big` - no couriers at your location can handle an item
   with measurements you requested.
 
-<pre>
-```json
+{% highlight javascript %}
 {
   "message": "item too big",
   "code": "item_too_big"
 }
-```
-</pre>
+{% endhighlight %}
 
 * `422 Outside Business Hours` - couriers at your location are not
   available at the moment. Please try again later.
 
-<pre>
-```json
+{% highlight javascript %}
 {
   "message": "no couriers can handle delivery at the moment",
   "code": "outside_business_hours"
 }
-```
-</pre>
+{% endhighlight %}

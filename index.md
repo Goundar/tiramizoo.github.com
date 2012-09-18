@@ -69,8 +69,7 @@ reading.
 A minimal `POST` request to the **quotes** resource which doesn't require
 authentication:
 
-<pre>
-```
+{% highlight bash %}
 curl -H 'Content-Type: application/json'
   -d '{ "pickup": { "address_line_1": "Im Dol 1, Berlin", "postal_code": "14195", "country_code": "de" },
         "delivery": { "address_line_1": "Thujaweg 1, Berlin", "postal_code": "14195", "country_code": "de" },
@@ -82,12 +81,11 @@ curl -H 'Content-Type: application/json'
         }]
       }'
   "https://api.tiramizoo.com/v1/quotes"
-```
-</pre>
+{% endhighlight %}
 
-```
+{% highlight bash %}
 curl -H 'Content-Type: application/json' -d '{"pickup":{"address_line_1":"Im Dol 1, Berlin","postal_code":"14195","country_code":"de"},"delivery":{"address_line_1":"Thujaweg 1, Berlin","postal_code":"14195","country_code":"de"},"items":[{"width":1,"height":1,"length":1,"weight":1}]}' "https://api.tiramizoo.com/v1/quotes"
-```
+{% endhighlight %}
 
 Detailed Documentation
 ----------------------
