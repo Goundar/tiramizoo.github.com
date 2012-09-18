@@ -15,7 +15,7 @@ website, administration and plugins, so you can count that it is well maintained
 For a detailed overview on how to use the API and how the workflow with tiramizoo.com looks like, take a look at the
 PDF Guide and instructions at http://www.tiramizoo.com/retailers.
 
-For testing purposes use [Tiramizoo sandbox](//sandbox.html)
+For testing purposes use [Tiramizoo sandbox](/sandbox.html)
 
 The tiramizoo.com API uses the **HTTP** protocol for communication and **JSON**
 for serialization of request and response bodies.  All URLs start with

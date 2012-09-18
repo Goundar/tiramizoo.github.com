@@ -4,8 +4,8 @@ title: Sandbox
 ---
 {% include JB/setup %}
 
-You can access https://sandbox.tiramizoo.com for testing purposes.
-All api requests should point to https://api-sandbox.tiramizoo.com
+You can access [https://sandbox.tiramizoo.com](https://sandbox.tiramizoo.com) for testing purposes.
+All api requests should point to [https://api-sandbox.tiramizoo.com](https://api-sandbox.tiramizoo.com)
 
 After registering account, sandbox API token can be found on profile page.
 
@@ -27,13 +27,13 @@ curl -H 'Content-Type: application/json' -d '{"pickup":{"address_line_1":"Kadett
 
 `201 Created`
 
+
 <pre>
-```json
 [
   {...}
 ]
-```
 </pre>
+
 
 * Error response when package is too big
 
@@ -44,12 +44,10 @@ curl -iH 'Content-Type: application/json' -d '{"pickup":{"address_line_1":"im do
 `422` Unprocessable Entity
 
 <pre>
-```json
 {
   "code": "items_too_big",
   "message": "items too big"
 }
-```
 </pre>
 
 * Error response when no couriers found
