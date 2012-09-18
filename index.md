@@ -29,7 +29,7 @@ JSON services usually is also much faster and easier than working with
 
 
 If you encounter a problem when using the API, please
-[let us know](https://github.com/tiramizoo/dev.tiramizoo.com/issues/new).
+[let us know](https://github.com/tiramizoo/tiramizoo.github.com/issues/new).
 
 Plugins
 -------
