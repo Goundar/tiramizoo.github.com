@@ -39,7 +39,7 @@ POST /orders
 {% endhighlight %}
 
 * `quote` - a valid, unmodified quote object fetched from
-  [Quotes API](https://github.com/tiramizoo/dev.tiramizoo.com/blob/master/sections/quotes.md).
+  [Quotes API](/quotes.html).
 * `pickup`, `delivery` - information about the people responsible for
   sending and receiving the delivery. `name` is required,
   `phone_number`, `company` and `email` are optional.
@@ -47,7 +47,7 @@ POST /orders
   be delivered.
 * `web_hook_url` - an optional param with an URL to be notified when the
   order's state changes. Please check
-  [Web hooks API](/tiramizoo/dev.tiramizoo.com/blob/master/sections/web_hooks.md)
+  [Web hooks API](/web_hooks.html)
   to learn more about Tiramizoo web hooks.
 * `external_id` - an optional param with custom id that enables connecting
   tiramizoo orders with your internal infrastructure. This id does not need

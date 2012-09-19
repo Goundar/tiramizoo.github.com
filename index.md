@@ -12,7 +12,7 @@ dogfood" style - tiramizoo uses it internally for the "book a courier"
 website, administration and plugins, so you can count that it is well maintained.
 
 For a detailed overview on how to use the API and how the workflow with tiramizoo.com looks like, take a look at the
-PDF Guide and instructions at http://www.tiramizoo.com/retailers.
+PDF Guide and instructions at https://www.tiramizoo.com/retailers.
 
 For testing purposes use [Tiramizoo sandbox](/sandbox.html)
 
@@ -38,12 +38,12 @@ and [xt:Commerce](http://www.xt-commerce.com/), OXID and magento are pending.
 Take a look at our [plugins
 page](/plugins.html).
 
-Request an API Key
-------------------
+Request an API Token
+--------------------
 
 For accessing the API - either via a plugin or via the API directly - you
-will need an API key. Please register a free account at [tiramizoo.com](https://www.tiramizoo.com)
-with username and password or via facebook in order to get one. The API key
+will need an API token. Please register a free account at [tiramizoo.com](https://www.tiramizoo.com)
+with username and password or via facebook in order to get one. The API token
 can be found via Profile / Edit profile when logged in.
 
 Versioning
@@ -55,8 +55,9 @@ Authentication
 --------------
 
 Some API calls require authentication with an API token. We accept API
-tokens as a URL param named `api_token`.  You must keep the API token
+tokens as a URL param named `api_token`. You must keep the API token
 secret. You can always request a new API token.
+In case of providing wrong token, `401 Unauthorized` response will be returned.
 
 Making Requests
 ---------------
@@ -85,11 +86,3 @@ curl -H 'Content-Type: application/json'
 {% highlight bash %}
 curl -H 'Content-Type: application/json' -d '{"pickup":{"address_line_1":"Im Dol 1, Berlin","postal_code":"14195","country_code":"de"},"delivery":{"address_line_1":"Thujaweg 1, Berlin","postal_code":"14195","country_code":"de"},"items":[{"width":1,"height":1,"length":1,"weight":1}]}' "https://api.tiramizoo.com/v1/quotes"
 {% endhighlight %}
-
-Detailed Documentation
-----------------------
-
-* [Sandbox](/sandbox.html)
-* [Quotes](/quotes.html)
-* [Orders](/orders.html)
-* [Web Hooks](/web_hooks.html)
