@@ -3,7 +3,7 @@ layout: page
 title: Direct Orders
 ---
 
-Direct Orders API provides a simple and quick way of of order creation.
+Direct Orders API provides a simple and quick way of order creation.
 You need to specify time when pickup should take place, then delivery will happen
 in next 2-3 hours.
 If you would like to have more control over pickup/delivery time windows, refer to
