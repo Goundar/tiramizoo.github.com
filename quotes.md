@@ -7,10 +7,7 @@ The Quotes API provides an easy way of checking delivery prices in
 tiramizoo. You need to have a quote to create an order when using the
 [Orders API](/orders.html).
 
-Create a quote
-------------
-
-### Request
+### Create quote
 
 ```
 POST /quotes
@@ -78,7 +75,7 @@ POST /quotes
   in cm and `weight` in kg. Optional `quantity` parameter contains a
   number of items to deliver (default is 1).
 
-### Alternative ways to specify pickup and delivery times
+#### Alternative ways to specify pickup and delivery times
 
 * **none** - we will try to pick up and deliver your item(s) during the next
     90 minutes.
@@ -92,7 +89,7 @@ POST /quotes
   will happen during the next 90 minutes. Otherwise, the first quote
   has a delivery window that is at least 2 hours from now.
 
-### Response
+#### Response
 
 * `200 OK` - Quote(s) were created, response body contains one or more
   quotes in an Array.
@@ -162,7 +159,7 @@ POST /quotes
 * `signature` property contains a signature based on the other
   properties of the quote.
 
-### Errors
+#### Errors
 
 * `422 Validation Error` - some of required parameters are missing or
   invalid in the request. Please fix parameters and retry the request.

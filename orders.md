@@ -9,10 +9,7 @@ using
 [Quotes API](/quotes.html),
 and pass a few additional details.
 
-Create Order
-------------
-
-### Request
+### Create Order
 
 ```
 POST /orders
@@ -54,7 +51,7 @@ POST /orders
   to be unique and can have variable length.
 * `items_price` - an optional param with price in cents of items to be delivered.
 
-### Response
+#### Response
 
 * `201 Created` - An Order was created, response body contains its
   representation. A Location header contains URL of the newly created
@@ -63,7 +60,7 @@ POST /orders
 
 Response body contains the same information as in Show request.
 
-### Errors
+#### Errors
 
 * `422 Validation Error` - some of required parameters are missing or
   invalid in the request. Please fix parameters and retry the request.
@@ -79,16 +76,13 @@ Response body contains the same information as in Show request.
 }
 {% endhighlight %}
 
-Show Order
-------------
-
-### Request
+### Show Order
 
 ```
 GET /orders/:order_uuid
 ```
 
-### Response
+#### Response
 
 * `200 Ok` - Returns order representation.
 
@@ -124,14 +118,13 @@ GET /orders/:order_uuid
 * `pickup_unreachable`
 * `delivery_unreachable`
 
-### Errors
+#### Errors
 
 * `404 Not Found`
 
-List Orders
-------------
+### List Orders
 
-### Request
+#### Request
 
 Request is authenticated. Orders are returned in descending order of creation date. Response includes 25 orders maximum, rest of results can be accessed using `page` param.
 
@@ -144,7 +137,7 @@ Parameters:
 * `external_id` - Return results containing `external_id` only.
 * `page` - Specifies the page of results to retrieve.
 
-### Response
+#### Response
 
 * `200 Ok` - Returns orders list and pagination information.
 

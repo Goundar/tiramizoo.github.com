@@ -12,9 +12,9 @@ All orders and payments will not take place, however user will be able to see fl
 
 Please, take in mind, that all records on sandbox can be removed.
 
-# Test data
+## Test data
 
-## Quotes
+#### Quotes
 
 Known responses from quotes API, with given parameters:
 

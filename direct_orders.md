@@ -9,10 +9,7 @@ in next 2-3 hours.
 If you would like to have more control over pickup/delivery time windows, refer to
 [Create Order API](/orders.html#create_order).
 
-Create Direct Order
--------------------
-
-### Request
+### Create Direct Order
 
 ```
 POST /direct_orders
@@ -82,7 +79,7 @@ POST /direct_orders
   * `country_code` - required string containing country code
 * `pickup` `at` - required date of pickup at least 1 hour ahead. Provided as UTC in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format.
 
-### Response
+#### Response
 
 * `201 Created` - An Order was created, response body contains its
   representation. A Location header contains URL of the newly created
@@ -91,7 +88,7 @@ POST /direct_orders
 
 Response body contains the same information as in [Order Show request](/orders.html#show_order),
 
-### Errors
+#### Errors
 
 * `422 Validation Error` - some of required parameters are missing or
   invalid in the request. Please fix parameters and retry the request.

@@ -16,8 +16,8 @@ plugin. Of course we are also happy about code contributions, e.g. bug
 fixes or new features.
 
 
-osCommerce
-----------
+### osCommerce
+
 
 [osCommerce website](http://www.oscommerce.com)
 
@@ -26,8 +26,8 @@ osCommerce
 [plugin sourcecode on github.com](https://github.com/tiramizoo/osc-plugin)
 
 
-xt:Commerce
-----------
+### xt:Commerce
+
 
 [xt:Commerce website](http://www.xt-commerce.com)
 

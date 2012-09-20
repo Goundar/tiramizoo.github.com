@@ -30,37 +30,36 @@ JSON services usually is also much faster and easier than working with
 If you encounter a problem when using the API, please
 [let us know](https://github.com/tiramizoo/tiramizoo.github.com/issues/new).
 
-Plugins
--------
+### Plugins
+
 
 Currently we are providing plugins for [osCommerce](http://www.oscommerce.com/)
 and [xt:Commerce](http://www.xt-commerce.com/), OXID and magento are pending.
 Take a look at our [plugins
 page](/plugins.html).
 
-Request an API Token
---------------------
+### Request an API Token
+
 
 For accessing the API - either via a plugin or via the API directly - you
 will need an API token. Please register a free account at [tiramizoo.com](https://www.tiramizoo.com)
 with username and password or via facebook in order to get one. The API token
 can be found via Profile / Edit profile when logged in.
 
-Versioning
-----------
+### Versioning
+
 
 All API urls have to be prefixed with API version, e.g. `/v1/quotes`.
 
-Authentication
---------------
+### Authentication
 
 Some API calls require authentication with an API token. We accept API
 tokens as a URL param named `api_token`. You must keep the API token
 secret. You can always request a new API token.
 In case of providing wrong token, `401 Unauthorized` response will be returned.
 
-Making Requests
----------------
+### Making Requests
+
 
 The following examples use the `curl` shell command and are rendered as a
 single copy-pastable line with a multiline representation for easy
