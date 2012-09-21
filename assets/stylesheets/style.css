@@ -1,0 +1,21 @@
+body {
+  padding-top: 60px;
+}
+.navbar .brand img {
+  vertical-align: text-top;
+}
+.navbar .brand span {
+  margin-left: 8px;
+  font-size: 22px;
+}
+.sidebar-nav {
+  top: 80px;
+  width: 160px;
+}
+footer {
+  padding-top: 20px;
+  margin: 40px 0;
+  border-top: 1px solid #ccc;
+  font-size: 12px;
+  text-align: center;
+}

@@ -3,7 +3,6 @@ layout: page
 title: Overview
 ---
 
-![tiramizoo API Documentation](/assets/images/tiramizoo-logo.png "tiramizoo API Documentation")
 
 You can easily offer the Tiramizoo delivery service to your customers, within your current
 e-commerce platform. Either download and install one of our plugins or do a custom integration by
