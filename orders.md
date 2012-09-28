@@ -73,7 +73,7 @@ Response body contains the same information as in Show request.
     {
       "field": "quote",
       "code": "expired",
-      "message": Quote has expired"
+      "message": "Quote has expired"
     },
     {
       "field": "pickup_name",
