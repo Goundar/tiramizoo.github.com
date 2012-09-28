@@ -169,7 +169,11 @@ POST /quotes
   "message": "validation error",
   "code": "validation_error",
   "errors": [
-    "pickup address_line_1 is missing"
+    {
+      "field": "pickup_address_line_1",
+      "code": "blank",
+      "message": "Pickup address_line_1 can't be blank"
+    }
   ]
 }
 {% endhighlight %}
