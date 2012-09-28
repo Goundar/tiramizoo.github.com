@@ -70,8 +70,16 @@ Response body contains the same information as in Show request.
   "message": "validation error",
   "code": "validation_error",
   "errors": [
-    "quote is invalid",
-    "quote has expired"
+    {
+      "field": "quote",
+      "code": "expired",
+      "message": Quote has expired"
+    },
+    {
+      "field": "pickup_name",
+      "code": "blank",
+      "message": "Pickup name can't be blank"
+    }
   ]
 }
 {% endhighlight %}

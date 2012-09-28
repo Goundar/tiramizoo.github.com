@@ -98,7 +98,11 @@ Response body contains the same information as in [Order Show request](/orders.h
   "message": "validation error",
   "code": "validation_error",
   "errors": [
-    "pickup_at is invalid"
+    {
+      "field": "pickup_name",
+      "code": "blank",
+      "message": "Pickup name can't be blank"
+    }
   ]
 }
 {% endhighlight %}
