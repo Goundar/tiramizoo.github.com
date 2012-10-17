@@ -78,6 +78,7 @@ POST /direct_orders
   * `postal_code` - required string containing postal code
   * `country_code` - required string containing country code
 * `pickup` `at` - required date of pickup at least 1 hour ahead. Provided as UTC in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format.
+* `delivery` `at` - optional date of delivery at most 4 hour ahead of `pickup` `at`. Provided as UTC in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format.
 
 #### Response
 
