@@ -3,13 +3,13 @@ layout: page
 title: Orders
 ---
 
-Orders API provides a convenient interface to create an
-order. To create an order, you need to have a valid quote created
-using
-[Quotes API](/quotes.html),
-and pass a few additional details.
+Direct Orders API provides a simple and quick way of order creation.
+You need to specify time when pickup should take place, then delivery will happen
+in next 2-3 hours. Specyfing delivery window is not mandatory but allows for more
+fine-grained control over delivery time. When `pickup` `before` and `pickup` `after`
+are the same, tiramizoo will try to pick up the goods at the exact given time.
 
-### Create Order
+### Create Direct Order
 
 ```
 POST /orders
@@ -17,13 +17,24 @@ POST /orders
 
 {% highlight javascript %}
 {
-  "quote": { ... },
-  "pickup": {
+  "pickup":  {
+    "address_line_1": "Im Dol 1",
+    "city": "Berlin",
+    "postal_code": "14195",
+    "country_code": "de",
     "name": "Alice Icealay",
     "phone_number": "+491234567890",
-    "email": "alice@icealay.de"
+    "email": "alice@icealay.de",
+    "before": "2012-04-06T10:00:00.000Z"
+    "after": "2012-04-06T10:00:00.000Z"
+
   },
   "delivery": {
+    "address_line_1": "Thujaweg 1",
+    "address_line_2": "Ground floor",
+    "city": "Berlin",
+    "postal_code": "12437",
+    "country_code": "de",
     "name": "Bob Obbay",
     "phone_number": "+490987654321",
     "email": "bob@obbay.de"
@@ -31,15 +42,17 @@ POST /orders
   "description": "rubber chickens and chunky bacon",
   "web_hook_url": "http://api.myshop.com/deliveries/update_state",
   "external_id": "123-456-789",
-  "items_price": 1999
+  "items": [
+    {
+      "width": 2,
+      "height": 8.2,
+      "length": 5,
+      "weight": 2
+    }
+  ]
 }
 {% endhighlight %}
 
-* `quote` - a valid, unmodified quote object fetched from
-  [Quotes API](/quotes.html).
-* `pickup`, `delivery` - information about the people responsible for
-  sending and receiving the delivery. `name` is required,
-  `phone_number`, `company` and `email` are optional.
 * `description` - a short description of the item(s) that are going to
   be delivered.
 * `web_hook_url` - an optional param with an URL to be notified when the
@@ -49,7 +62,26 @@ POST /orders
 * `external_id` - an optional param with custom id that enables connecting
   tiramizoo orders with your internal infrastructure. This id does not need
   to be unique and can have variable length.
-* `items_price` - an optional param with price in cents of items to be delivered.
+* `items` - an array containing measurements of at least one item.
+  `width`, `height`, `length` are required dimensions of your package
+  in cm and `weight` in kg. Optional `quantity` parameter contains a
+  number of items to deliver (default is 1).
+* `pickup`, `delivery` are required parameters cointaining addresses
+   from where to pick your items up and where to deliver them and information
+   about people responsible for sending and receiving the delivery.
+  * `name` - required string containing name
+  * `phone_number` - optional string containing phone number
+  * `email` - optional string containing email address
+  * `address_line_1` - required string containing street name and
+    building number.
+  * `address_line_2` - may contain some additional information for
+    courier to locate the address, i.e. flat number, room number, etc.
+  * `city` - optional string containing city name
+  * `postal_code` - required string containing postal code
+  * `country_code` - required string containing country code
+
+* `pickup` `before` and  `after` - required date and time defining pickup window, the `after` element must be at least 1 hour ahead. Provided as UTC in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format.
+* `delivery` `before` and `after` - optional delivery window, `after` at most 4 hour ahead of `pickup` `after`. Provided as UTC in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format.
 
 #### Response
 
@@ -58,7 +90,7 @@ POST /orders
   Order. Courier will deliver the package according to specified
   params.
 
-Response body contains the same information as in Show request.
+Response body contains the same information as in [Order Show request](/orders.html#show_order),
 
 #### Errors
 
@@ -71,91 +103,10 @@ Response body contains the same information as in Show request.
   "code": "validation_error",
   "errors": [
     {
-      "field": "quote",
-      "code": "expired",
-      "message": "Quote has expired"
-    },
-    {
       "field": "pickup_name",
       "code": "blank",
       "message": "Pickup name can't be blank"
     }
-  ]
-}
-{% endhighlight %}
-
-### Show Order
-
-```
-GET /orders/:order_uuid
-```
-
-#### Response
-
-* `200 Ok` - Returns order representation.
-
-{% highlight javascript %}
-{
-  "uuid": "b966a74b-32a0-4ade-b864-e72472230cf2",
-  "state": "awaiting_payment",
-  "external_id": "123-456-789",
-  "web_hook_url": "http://api.myshop.com/deliveries/update_state",
-  "description": "rubber chickens and chunky bacon",
-  "items_price": 1999,
-  "pickup": {
-    "name": "Alice Icealay",
-    "phone_number": "+491234567890",
-    "email": "alice@icealay.de"
-  },
-  "delivery": {
-    "name": "Bob Obbay",
-    "phone_number": "+490987654321",
-    "email": "bob@obbay.de"
-  },
-  "quote": { ... }
-}
-{% endhighlight %}
-
-#### Possible states
-
-* `awaiting_payment` - initial state
-* `payment_failed`
-* `dispatched`
-* `picked_up`
-* `delivered`
-* `pickup_unreachable`
-* `delivery_unreachable`
-
-#### Errors
-
-* `404 Not Found`
-
-### List Orders
-
-#### Request
-
-Request is authenticated. Orders are returned in descending order of creation date. Response includes 25 orders maximum, rest of results can be accessed using `page` param.
-
-```
-GET /orders
-```
-
-Parameters:
-
-* `external_id` - Return results containing `external_id` only.
-* `page` - Specifies the page of results to retrieve.
-
-#### Response
-
-* `200 Ok` - Returns orders list and pagination information.
-
-{% highlight javascript %}
-{
-  "total_pages": 5,
-  "per_page": 25,
-  "page": 1,
-  "orders": [
-    { ... }
   ]
 }
 {% endhighlight %}

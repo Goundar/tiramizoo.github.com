@@ -68,19 +68,27 @@ A minimal `POST` request to the **quotes** resource which doesn't require
 authentication:
 
 {% highlight bash %}
-curl -H 'Content-Type: application/json'
-  -d '{ "pickup": { "address_line_1": "Im Dol 1, Berlin", "postal_code": "14195", "country_code": "de" },
-        "delivery": { "address_line_1": "Thujaweg 1, Berlin", "postal_code": "14195", "country_code": "de" },
-        "items": [{
-          "width": 1,
-          "height": 1,
-          "length": 1,
-          "weight: 1
-        }]
-      }'
-  "https://api.tiramizoo.com/v1/quotes"
+curl -H 'Content-Type: application/json' -d '{
+  "pickup_postal_code": "14195",
+  "delivery_postal_code": "12437",
+  "items": [
+    {
+      "width": 2,
+      "height": 8.2,
+      "length": 5,
+      "weight": 2
+    }, {
+      "width": 20.5,
+      "height": 82,
+      "length": 50,
+      "weight": 7.9,
+      "quantity": 42
+    }
+  ]
+}' "https://api.tiramizoo.com/v1/quotes"
 {% endhighlight %}
 
+
 {% highlight bash %}
-curl -H 'Content-Type: application/json' -d '{"pickup":{"address_line_1":"Im Dol 1, Berlin","postal_code":"14195","country_code":"de"},"delivery":{"address_line_1":"Thujaweg 1, Berlin","postal_code":"14195","country_code":"de"},"items":[{"width":1,"height":1,"length":1,"weight":1}]}' "https://api.tiramizoo.com/v1/quotes"
+curl -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","delivery_postal_code":"12437","items":[{"width":2,"height":8.2,"length":5,"weight":2},{"width":20.5,"height":82,"length":50,"weight":7.9,"quantity":42}]}' "https://api.tiramizoo.com/v1/quotes"
 {% endhighlight %}
