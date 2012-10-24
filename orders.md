@@ -3,13 +3,13 @@ layout: page
 title: Orders
 ---
 
-Direct Orders API provides a simple and quick way of order creation.
+Orders API provides a simple and quick way of order creation.
 You need to specify time when pickup should take place, then delivery will happen
 in next 2-3 hours. Specyfing delivery window is not mandatory but allows for more
 fine-grained control over delivery time. When `pickup` `before` and `pickup` `after`
 are the same, tiramizoo will try to pick up the goods at the exact given time.
 
-### Create Direct Order
+### Create Order
 
 ```
 POST /orders
