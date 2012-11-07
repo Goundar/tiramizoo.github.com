@@ -5,15 +5,19 @@ title: Overview
 
 
 You can easily offer the Tiramizoo delivery service to your customers, within your current
-e-commerce platform. Either download and install one of our plugins or do a custom integration by
+e-commerce platform. Either download and install one of our plugins (soon to come, we are working 
+on an OXID plugin release in beginning of december) or do a custom integration by
 programming against the public REST/JSON API. The API is "eat your own
 dogfood" style - tiramizoo uses it internally for the "book a courier"
 website, administration and plugins, so you can count that it is well maintained.
 
-For a detailed overview on how to use the API and how the workflow with tiramizoo.com looks like, take a look at the
-PDF Guide and instructions at https://www.tiramizoo.com/retailers.
+For a detailed overview on how the workflow with tiramizoo.com looks like, take a look at the
+PDF Guide at https://www.tiramizoo.com/retailers. Note: The guide is beeing worked on and a little bit outdated. It 
+only contains information about the delivery workflow with an offer process. This is not the case
+any more - we now directly accept deliveries without creating an offer first.
 
-For testing purposes use [Tiramizoo sandbox](/sandbox.html)
+For testing purposes use the [tiramizoo.com sandbox](/sandbox.html). It's a full copy of the production environment 
+except no delivery you trigger there is dispatched to our couriers.
 
 The tiramizoo.com API uses the **HTTP** protocol for communication and **JSON**
 for serialization of request and response bodies.  All URLs start with
@@ -25,19 +29,10 @@ PHP, Ruby, Java, .Net and Python to name only a few. Integrating restful
 JSON services usually is also much faster and easier than working with
 [SOAP](http://en.wikipedia.org/wiki/SOAP) and other XML based or stateful services.
 
-
 If you encounter a problem when using the API, please
 [let us know](https://github.com/tiramizoo/tiramizoo.github.com/issues/new).
 
-### Plugins
-
-
-Currently we are providing plugins for [osCommerce](http://www.oscommerce.com/)
-and [xt:Commerce](http://www.xt-commerce.com/), OXID and magento are pending.
-Take a look at our [plugins
-page](/plugins.html).
-
-### Request an API Token
+### API Tokens
 
 
 For accessing the API - either via a plugin or via the API directly - you
