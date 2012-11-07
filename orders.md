@@ -3,11 +3,9 @@ layout: page
 title: Orders
 ---
 
-Orders API provides a simple and quick way of order creation.
-You need to specify time when pickup should take place, then delivery will happen
-in next 2-3 hours. Specyfing delivery window is not mandatory but allows for more
-fine-grained control over delivery time. When `pickup` `before` and `pickup` `after`
-are the same, tiramizoo will try to pick up the goods at the exact given time.
+The orders API provides a simple and quick way of order creation.
+You need to specify the time when pickup and delivery should take place by giving a time window with `before` 
+and `after´. When `before` and `after` are the same, tiramizoo will try to pick up the goods at the exact given time.
 
 ### Create Order
 
@@ -56,9 +54,8 @@ POST /orders
 * `description` - a short description of the item(s) that are going to
   be delivered.
 * `web_hook_url` - an optional param with an URL to be notified when the
-  order's state changes. Please check
-  [Web hooks API](/web_hooks.html)
-  to learn more about Tiramizoo web hooks.
+  order's state changes. Please check the [Web hooks API](/web_hooks.html)
+  to learn more about web hooks.
 * `external_id` - an optional param with custom id that enables connecting
   tiramizoo orders with your internal infrastructure. This id does not need
   to be unique and can have variable length.
