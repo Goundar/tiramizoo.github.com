@@ -12,9 +12,10 @@ dogfood" style - tiramizoo uses it internally for the "book a courier"
 website, administration and plugins, so you can count that it is well maintained.
 
 For a detailed overview on how the workflow with tiramizoo.com looks like, take a look at the
-PDF Guide at https://www.tiramizoo.com/retailers. Note: The guide is beeing worked on and a little bit outdated. It 
-only contains information about the delivery workflow with an offer process. This is not the case
-any more - we now directly accept deliveries without creating an offer first.
+PDF Guide at [our retailers page](https://www.tiramizoo.com/retailers). Note: The guide is 
+beeing worked on and a little bit outdated. It only contains information about the delivery 
+workflow with an offer process. This is not the case anymore - we now directly accept deliveries 
+without creating an offer first.
 
 For testing purposes use the [tiramizoo.com sandbox](/sandbox.html). It's a full copy of the production environment 
 except no delivery you trigger there is dispatched to our couriers.
