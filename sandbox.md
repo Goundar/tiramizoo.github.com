@@ -6,13 +6,17 @@ title: Sandbox
 You can access [https://sandbox.tiramizoo.com](https://sandbox.tiramizoo.com) for testing purposes.
 All api requests should point to [https://api-sandbox.tiramizoo.com](https://api-sandbox.tiramizoo.com)
 
-After registering account, sandbox API token can be found on profile page.
+After registering account at the sandbox (that is just a copy of the production application), the sandbox API token 
+can be found on the profile page.
 
-All orders and payments will not take place, however user will be able to see flow of Tiramizoo service.
+All orders and payments will not be dispatched to a courier, however the user will be able to try out tiramizoo and use it for
+testing purposes.
 
-Please, take in mind, that all records on sandbox can be removed.
+Please take in mind that all records on the sandbox including account data are volatile, we might purge the database anytime.
 
 ## Test data
+
+The sandbox only has quotes for Berlin, Germany defined, so please keep that in mind when testing.
 
 #### Quotes
 
