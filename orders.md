@@ -5,7 +5,7 @@ title: Orders
 
 The orders API provides a simple and quick way of order creation.
 You need to specify the time when pickup and delivery should take place by giving a time window with `before` 
-and `after´. When `before` and `after` are the same, tiramizoo will try to pick up the goods at the exact given time.
+and `after`. When `before` and `after` are the same, tiramizoo will try to pick up the goods at the exact given time.
 
 ### Create Order
 
