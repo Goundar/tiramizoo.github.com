@@ -59,12 +59,18 @@ POST /quotes
 
 #### Errors
 
-* `422 No Couriers Found` - no couriers are available at given
-  locations. Your area might not yet be supported by tiramizoo.
+* `422 Validation Error` - some of required parameters are missing or invalid in the request. Please fix parameters and retry the request.
 
 {% highlight javascript %}
 {
-  "message": "no couriers found",
-  "code": "no_couriers_found"
+  "message": "validation error",
+  "code": "validation_error",
+  "errors": [
+    {
+      "field": "delivery_postal_code",
+      "code": "invalid",
+      "message": "Delivery postal code is invalid"
+    }
+  ]
 }
 {% endhighlight %}
