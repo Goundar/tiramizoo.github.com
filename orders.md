@@ -16,7 +16,7 @@ POST /orders
 {% highlight javascript %}
 {
   "pickup":  {
-    "address": "Im Dol 1",
+    "address_line": "Im Dol 1",
     "city": "Berlin",
     "postal_code": "14195",
     "country_code": "de",
@@ -27,7 +27,7 @@ POST /orders
     "before": "2012-04-06T11:00:00.000Z"
   },
   "delivery": {
-    "address": "Thujaweg 1",
+    "address_line": "Thujaweg 1",
     "city": "Berlin",
     "postal_code": "12437",
     "country_code": "de",
@@ -74,7 +74,7 @@ POST /orders
   * `name` - required string containing name
   * `phone_number` - required string containing phone number
   * `email` - optional string containing email address
-  * `address` - required string containing street name and
+  * `address_line` - required string containing street name and
     building number.
   * `city` - optional string containing city name
   * `postal_code` - required string containing postal code
@@ -140,7 +140,7 @@ GET /orders/uuid
     "name": null
   },
   "pickup": {
-    "address": "Im Dol 1",
+    "address_line": "Im Dol 1",
     "city": "Berlin",
     "postal_code": "14195",
     "country_code": "de",
@@ -151,7 +151,7 @@ GET /orders/uuid
     "before": "2012-04-06T12:00:00.000Z"
   },
   "delivery": {
-    "address": "Thujaweg 1",
+    "address_line": "Thujaweg 1",
     "city": "Berlin",
     "postal_code": "12437",
     "country_code": "de",
