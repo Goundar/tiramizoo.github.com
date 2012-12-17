@@ -57,7 +57,7 @@ POST /orders
 * `description` - a short description of the item(s) that are going to
   be delivered.
 * `web_hook_url` - an optional param with an URL to be notified when the
-  order's state changes. Please check the [Web hooks API](/web_hooks.html)
+  order's state changes. Please check the [Order Status](/order_status.html)
   to learn more about web hooks.
 * `external_id` - an optional param with custom id that enables connecting
   tiramizoo orders with your internal infrastructure. This id does not need
@@ -184,3 +184,6 @@ GET /orders/uuid
 
 * `404 Not Found` - Order with provided UUID was not found
 * `401 Unauthorized` - Request requires authentication
+
+
+[Examples](/sandbox.html#orders)
