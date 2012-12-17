@@ -3,26 +3,20 @@ layout: page
 title: Service Availability
 ---
 
-This API provides informations in what hours system operates in given city and in which 
-dates in next 30 days is unavailable
+This API provides informations:
+- about working service hours
+- closed days in next week
 
 ### Generate question
 
 ```
-GET /service_availability
+GET /api/v1/service_availability?country_code=%country_code%&delivery_postal_code=%delivery_postal_code%&pickup_postal_code=%pickup_postal_code
 ```
-
-{% highlight javascript %}
-{
-  "city": "berlin"
-}
-{% endhighlight %}
-
-* `city` required string containing city identifier
+%country_code%, %delivery_postal_code%, %pickup_postal_code% are required
 
 #### Response
 
-* `200 OK` - response body contains open hours and closed days.
+* `200 OK` 
 {% highlight javascript %}
 {
   "open_hours": [8, 20],
@@ -45,8 +39,10 @@ GET /service_availability
       "errors" => [{
         "field" => "city",
         "code" => "not_found",
-        "message" => "Given city doesn't exist"
+        "message" => "We are not able to identify the city by postal codes"
       }]
   }
 }
 {% endhighlight %}
+
+[Examples](/sandbox.html#service_availability)

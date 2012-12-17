@@ -257,3 +257,46 @@ curl -v -X PUT -H 'Content-Type: application/json' -d '{"state" : "cancelled" }'
   }]
 }
 {% endhighlight %}
+
+## Service Availability
+
+#### Success response
+
+{% highlight bash %}
+curl -v -H 'Content-Type: application/json' https://api-sandbox.tiramizoo.com/api/v1/service_availability?country_code=de&delivery_postal_code=14195&pickup_postal_code=14195
+{% endhighlight %}
+
+`200 OK`
+
+{% highlight bash %}
+{
+  "open_hours": [8, 20],
+  "closed_days": [
+    {"year": 2012, "month": 12, "day": 24},
+    {"year": 2012, "month": 12, "day": 24},
+    {"year": 2012, "month": 12, "day": 30}
+  ]
+}
+{% endhighlight %}
+
+#### Error response when country code or postal codes incorrect 
+
+{% highlight bash %}
+curl -v -H 'Content-Type: application/json' https://api-sandbox.tiramizoo.com/api/v1/service_availability?country_code=de&delivery_postal_code=14195&pickup_postal_code=10
+{% endhighlight %}
+
+
+`422` Unprocessable Entity
+
+{% highlight javascript %}
+{
+  "message" => "record_not_found",
+      "code" => "record_not_found",
+      "errors" => [{
+        "field" => "city",
+        "code" => "not_found",
+        "message" => "We are not able to identify the city by postal codes"
+      }]
+  }
+}
+{% endhighlight %}
