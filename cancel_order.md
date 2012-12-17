@@ -17,8 +17,10 @@ You can cancel only orders with attribute:
 
 
 ```
-PUT /orders/%order.uuid%
+PUT /orders/uuid
 ```
+
+uuid - uniqe order identifier
 
 {% highlight javascript %}
 {

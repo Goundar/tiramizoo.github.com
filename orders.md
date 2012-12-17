@@ -116,6 +116,8 @@ Response body contains the same information as in [Order Show request](/orders.h
 GET /orders/uuid
 ```
 
+uuid - uniqe order identifier
+
 #### Response
 
 * `200 OK`
