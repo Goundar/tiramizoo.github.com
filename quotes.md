@@ -74,3 +74,5 @@ POST /quotes
   ]
 }
 {% endhighlight %}
+
+[Examples](/sandbox.html#quotes)
