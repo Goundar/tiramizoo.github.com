@@ -7,47 +7,68 @@ The orders API provides a simple and quick way of order creation.
 You need to specify the time when pickup and delivery should take place by giving a time window with `before`
 and `after`.
 
+All requests require authentication (valid **API_TOKEN**  [More](/#api_tokens) )
+
 ### Create Order
 
 ```
-POST /orders
+POST /orders?api_token=API_TOKEN
 ```
 
 {% highlight javascript %}
 {
-  "pickup":  {
+  "uuid": "14bcab1a-b81d-483a-af86-04edcacd46aa",
+  "state": "processing",
+  "created_at": "2012-04-06T8:00:00.000Z",
+  "description": "bottle of wine",
+  "courier_information": "please knock, doorbell doesn't work",
+  "external_id": "11-22-33-44-55",
+  "merge_field": null,
+  "web_hook_url": "http://api.myshop.com/deliveries/update_state",
+  "items_price": 0,
+  "tracking_url": "https://tiramizoo.com/orders/BN1HMDCTYGE11/tracking_status",
+  "tracking_code": "BN1HM-DCTY-GE11",
+  "cancellable": false,
+  "signature": {
+    "requested": false,
+    "url": null,
+    "name": null
+  },
+  "pickup": {
     "address_line": "Im Dol 1",
     "city": "Berlin",
     "postal_code": "14195",
     "country_code": "de",
-    "name": "Alice Icealay",
-    "phone_number": "+491234567890",
-    "email": "alice@icealay.de",
+    "name": "Alice Muller",
+    "phone_number": "+49000222333",
+    "email": "deliver@germany.de",
     "after": "2012-04-06T10:00:00.000Z",
-    "before": "2012-04-06T11:00:00.000Z"
+    "before": "2012-04-06T12:00:00.000Z"
   },
   "delivery": {
     "address_line": "Thujaweg 1",
     "city": "Berlin",
     "postal_code": "12437",
     "country_code": "de",
-    "name": "Bob Obbay",
-    "phone_number": "+490987654321",
-    "email": "bob@obbay.de",
+    "name": "Bob Obama",
+    "phone_number": "+49099999999",
+    "email": "bob@obama.de"
     "after": "2012-04-06T14:00:00.000Z",
     "before": "2012-04-06T15:00:00.000Z"
   },
-  "description": "rubber chickens and chunky bacon",
-  "web_hook_url": "http://api.myshop.com/deliveries/update_state",
-  "external_id": "123-456-789",
-  "courier_information": "please knock, doorbell doesn't work",
-  "merge_field": "my passed value",
+  "price": {
+    "net": 664,
+    "gross": 790,
+    "currency": "EUR",
+    "tax_rate": 19,
+    "tax": 126
+  },
   "items": [
     {
-      "width": 2,
-      "height": 8.2,
-      "length": 5,
-      "weight": 2,
+      "width": 48,
+      "height": 39,
+      "length": 40,
+      "weight": 20,
       "quantity": 1
     }
   ]
@@ -110,10 +131,99 @@ Response body contains the same information as in [Order Show request](/orders.h
 }
 {% endhighlight %}
 
+### Show Orders
+
+```
+GET /orders?external_id=EXTERNAL_ID&page=PAGE&api_token=API_TOKEN
+```
+
+external_id - an optional param with custom id that enables connecting tiramizoo orders with your internal infrastructure. This id does not need
+
+page - an optional param (by default first page is returned)
+
+#### Response
+
+* `200 OK`
+
+{% highlight javascript %}
+{
+  "page": 1,
+  "total_pages": 5,
+  "per_page": 25,
+  "orders": [{
+    "uuid": "71e7acb2-3ed2-4137-ad62-446fb44f4299",
+    "state": "processing",
+    "created_at": "2012-12-19T08:27:05+01:00",
+    "description": "Original BUSH",
+    "courier_information": null,
+    "external_id": "44444444422222222",
+    "merge_field": null,
+    "web_hook_url": "http://api.myshop.com/deliveries/update_state",
+    "items_price": null,
+    "tracking_url": "https://api-sandbox.tiramizoo.com/orders/0FAABYLJUZIWW/tracking_status",
+    "tracking_code": "0FAAB-YLJU-ZIWW",
+    "cancellable": true,
+    "signature": {
+      "requested": false,
+      "url": null,
+      "name": null
+    },
+    "pickup": {
+      "name": "Germany",
+      "phone_number": "485001122112",
+      "email": "some@gmail.com",
+      "address_line": "Guntherstrasse 16",
+      "city": "M\u00fcnchen",
+      "postal_code": "80639",
+      "country_code": "de",
+      "after": "2012-12-19T20:00:00+01:00",
+      "before": "2012-12-19T22:00:00+01:00"
+    },
+    "delivery": {
+      "name": "Your Company Name",
+      "phone_number": "217-8918712",
+      "email": "another@tiramizoo.com",
+      "address_line": "Maple Street 2425",
+      "city": "Nettelsee",
+      "postal_code": "80331",
+      "country_code": "de",
+      "after": "2012-12-19T20:00:00+01:00",
+      "before": "2012-12-19T21:30:00+01:00"
+    },
+    "price": {
+      "net": 664,
+      "gross": 790,
+      "currency": "EUR",
+      "tax_rate": 19,
+      "tax": 126
+    },
+    "items": [{
+      "width": 20.0,
+      "height": 30.0,
+      "length": 40.0,
+      "weight": 1.0,
+      "quantity": 1
+    }]
+  }, {
+    "uuid": "9afb760c-7a74-4e3c-9a4e-4258d969db00",
+    "state": "processing",
+    "created_at": "2012-12-18T20:59:17+01:00",
+    "description": "Original BUSH",
+    "courier_information": null,
+    ...
+  }
+}
+{% endhighlight %}
+
+#### Errors
+
+* `401 Unauthorized` - Request requires authentication
+
+
 ### Show Order
 
 ```
-GET /orders/:uuid
+GET /orders/:uuid?api_token=API_TOKEN
 ```
 
 uuid - uniqe order identifier
@@ -124,17 +234,17 @@ uuid - uniqe order identifier
 
 {% highlight javascript %}
 {
-  "uuid": "14bcab1a-b81d-483a-af86-04edcacd46ce",
+  "uuid": "14bcab1a-b81d-483a-af86-04edcacd46aa",
   "state": "processing",
   "created_at": "2012-04-06T8:00:00.000Z",
   "description": "bottle of wine",
   "courier_information": "please knock, doorbell doesn't work",
-  "external_id": null,
+  "external_id": "11-22-33-44-55",
   "merge_field": null,
-  "web_hook_url": null,
+  "web_hook_url": "http://api.myshop.com/deliveries/update_state",
   "items_price": 0,
-  "tracking_url": "https://tiramizoo.com/orders/BN1HMDCTYGE9K/tracking_status",
-  "tracking_code": "BN1HM-DCTY-GE9K",
+  "tracking_url": "https://tiramizoo.com/orders/BN1HMDCTYGE11/tracking_status",
+  "tracking_code": "BN1HM-DCTY-GE11",
   "cancellable": false,
   "signature": {
     "requested": false,
@@ -146,9 +256,9 @@ uuid - uniqe order identifier
     "city": "Berlin",
     "postal_code": "14195",
     "country_code": "de",
-    "name": "Alice Icealay",
-    "phone_number": "+491234567890",
-    "email": "alice@icealay.de",
+    "name": "Alice Muller",
+    "phone_number": "+49000222333",
+    "email": "deliver@germany.de",
     "after": "2012-04-06T10:00:00.000Z",
     "before": "2012-04-06T12:00:00.000Z"
   },
@@ -157,9 +267,9 @@ uuid - uniqe order identifier
     "city": "Berlin",
     "postal_code": "12437",
     "country_code": "de",
-    "name": "Bob Obbay",
-    "phone_number": "+490987654321",
-    "email": "bob@obbay.de"
+    "name": "Bob Obama",
+    "phone_number": "+49099999999",
+    "email": "bob@obama.de"
     "after": "2012-04-06T14:00:00.000Z",
     "before": "2012-04-06T15:00:00.000Z"
   },

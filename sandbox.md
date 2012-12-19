@@ -7,7 +7,7 @@ You can access [https://sandbox.tiramizoo.com](https://sandbox.tiramizoo.com) fo
 All api requests should point to [https://api-sandbox.tiramizoo.com](https://api-sandbox.tiramizoo.com)
 
 After registering account at the sandbox (that is just a copy of the production application), the sandbox API token 
-can be found on the profile page.
+can be found on the profile page ([https://sandbox.tiramizoo.com/dashboard/user/edit](https://sandbox.tiramizoo.com/dashboard/user/edit)).
 
 All orders and payments will not be dispatched to a courier, however the user will be able to try out tiramizoo and use it for
 testing purposes.
@@ -60,7 +60,9 @@ curl -H 'Content-Type: application/json' -d '{"pickup_postal_code": "14195","del
 
 All test requests require valid **API_TOKEN** ([https://sandbox.tiramizoo.com/dashboard/user/edit](https://sandbox.tiramizoo.com/dashboard/user/edit))
 
-Known responses from quotes API, with given parameters:
+`401` Unauthorized - API response when no or wrong API_TOKEN
+
+### Creation
 
 #### Successs response
 
@@ -208,7 +210,7 @@ or
 }
 {% endhighlight %}
 
-## Order Cancelation
+### Order Cancelation
 
 Order should have first status:
 {% highlight javascript %}
@@ -257,6 +259,178 @@ order_uuid - uniqe order identifier
   }]
 }
 {% endhighlight %}
+
+### Show Orders
+
+#### Success response
+
+{% highlight bash %}
+curl -v -H 'Content-Type: application/json' https://api-sandbox.tiramizoo.com/v1/orders?external_id=EXTERNAL_ID&page=PAGE&api_token=API_TOKEN
+{% endhighlight %}
+
+external_id - an optional param with custom id that enables connecting tiramizoo orders with your internal infrastructure. This id does not need
+
+page - an optional param (by default first page is returned)
+
+Your orders collection is paginated, one page returns 25 orders, i.e. to obtain 3-th page:
+
+{% highlight bash %}
+curl -v -H 'Content-Type: application/json' https://api-sandbox.tiramizoo.com/v1/orders?page=3&api_token=API_TOKEN
+{% endhighlight %}
+
+`200 OK`
+
+{% highlight javascript %}
+{
+  "page": 3,
+  "total_pages": 5,
+  "per_page": 25,
+  "orders": [{
+    "uuid": "71e7acb2-3ed2-4137-ad62-446fb44f4299",
+    "state": "processing",
+    "created_at": "2012-12-19T08:27:05+01:00",
+    "description": "Original BUSH",
+    "courier_information": null,
+    "external_id": "44444444422222222",
+    "merge_field": null,
+    "web_hook_url": "http://api.myshop.com/deliveries/update_state",
+    "items_price": null,
+    "tracking_url": "https://api-sandbox.tiramizoo.com/orders/0FAABYLJUZIWW/tracking_status",
+    "tracking_code": "0FAAB-YLJU-ZIWW",
+    "cancellable": true,
+    "signature": {
+      "requested": false,
+      "url": null,
+      "name": null
+    },
+    "pickup": {
+      "name": "Germany",
+      "phone_number": "485001122112",
+      "email": "some@gmail.com",
+      "address_line": "Guntherstrasse 16",
+      "city": "M\u00fcnchen",
+      "postal_code": "80639",
+      "country_code": "de",
+      "after": "2012-12-19T20:00:00+01:00",
+      "before": "2012-12-19T22:00:00+01:00"
+    },
+    "delivery": {
+      "name": "Your Company Name",
+      "phone_number": "217-8918712",
+      "email": "another@tiramizoo.com",
+      "address_line": "Maple Street 2425",
+      "city": "Nettelsee",
+      "postal_code": "80331",
+      "country_code": "de",
+      "after": "2012-12-19T20:00:00+01:00",
+      "before": "2012-12-19T21:30:00+01:00"
+    },
+    "price": {
+      "net": 664,
+      "gross": 790,
+      "currency": "EUR",
+      "tax_rate": 19,
+      "tax": 126
+    },
+    "items": [{
+      "width": 20.0,
+      "height": 30.0,
+      "length": 40.0,
+      "weight": 1.0,
+      "quantity": 1
+    }]
+  }, {
+    "uuid": "9afb760c-7a74-4e3c-9a4e-4258d969db00",
+    "state": "processing",
+    "created_at": "2012-12-18T20:59:17+01:00",
+    "description": "Original BUSH",
+    "courier_information": null,
+    ...
+  }
+}
+{% endhighlight %}
+
+### Show Order
+
+#### Success response
+
+{% highlight bash %}
+curl -v -H 'Content-Type: application/json' https://api-sandbox.tiramizoo.com/v1/orders/:order_uuid?api_token=API_TOKEN
+{% endhighlight %}
+
+order_uuid - uniqe order identifier
+
+`200 OK`
+
+{% highlight javascript %}
+{
+  "uuid": "14bcab1a-b81d-483a-af86-04edcacd46aa",
+  "state": "processing",
+  "created_at": "2012-04-06T8:00:00.000Z",
+  "description": "bottle of wine",
+  "courier_information": "please knock, doorbell doesn't work",
+  "external_id": "11-22-33-44-55",
+  "merge_field": null,
+  "web_hook_url": "http://api.myshop.com/deliveries/update_state",
+  "items_price": 0,
+  "tracking_url": "https://tiramizoo.com/orders/BN1HMDCTYGE11/tracking_status",
+  "tracking_code": "BN1HM-DCTY-GE11",
+  "cancellable": false,
+  "signature": {
+    "requested": false,
+    "url": null,
+    "name": null
+  },
+  "pickup": {
+    "address_line": "Im Dol 1",
+    "city": "Berlin",
+    "postal_code": "14195",
+    "country_code": "de",
+    "name": "Alice Muller",
+    "phone_number": "+49000222333",
+    "email": "deliver@germany.de",
+    "after": "2012-04-06T10:00:00.000Z",
+    "before": "2012-04-06T12:00:00.000Z"
+  },
+  "delivery": {
+    "address_line": "Thujaweg 1",
+    "city": "Berlin",
+    "postal_code": "12437",
+    "country_code": "de",
+    "name": "Bob Obama",
+    "phone_number": "+49099999999",
+    "email": "bob@obama.de"
+    "after": "2012-04-06T14:00:00.000Z",
+    "before": "2012-04-06T15:00:00.000Z"
+  },
+  "price": {
+    "net": 664,
+    "gross": 790,
+    "currency": "EUR",
+    "tax_rate": 19,
+    "tax": 126
+  },
+  "items": [
+    {
+      "width": 48,
+      "height": 39,
+      "length": 40,
+      "weight": 20,
+      "quantity": 1
+    }
+  ]
+}
+{% endhighlight %}
+
+#### Error response when no order found
+
+{% highlight bash %}
+curl -v -H 'Content-Type: application/json' https://api-sandbox.tiramizoo.com/v1/orders/:order_uuid?api_token=API_TOKEN
+{% endhighlight %}
+
+order_uuid - uniqe order identifier
+
+`404` Not Found
 
 ## Service Availability
 
