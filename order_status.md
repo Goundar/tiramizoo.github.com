@@ -41,8 +41,8 @@ curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge met
 
 {% highlight javascript %}
 [
-  { "tracking_url" : "https://api-sandbox.tiramizoo.com/orders/%tracking_code%/tracking_status" }
+  { "tracking_url" : "https://api-sandbox.tiramizoo.com/orders/TRACKING_CODE/tracking_status" }
 ]
 {% endhighlight %}
 
-where %tracking_code% represent uniq identifier of the order
+TRACKING_CODE - uniq order identifier

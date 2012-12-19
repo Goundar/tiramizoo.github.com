@@ -10,9 +10,10 @@ This API provides informations:
 ### Generate question
 
 ```
-GET /api/v1/service_availability?country_code=%country_code%&delivery_postal_code=%delivery_postal_code%&pickup_postal_code=%pickup_postal_code
+GET /api/v1/service_availability?country_code=COUNTRY_CODE&delivery_postal_code=DELIVERY_POSTAL_CODE&pickup_postal_code=PICKUP_POSTAL_CODE
 ```
-%country_code%, %delivery_postal_code%, %pickup_postal_code% are required
+
+COUNTRY_CODE, DELIVERY_POSTAL_CODE, PICKUP_POSTAL_CODE are required
 
 #### Response
 

@@ -3,8 +3,6 @@ layout: page
 title: Order Cancellation
 ---
 
-### Order Cancellation
-
 You can cancel only orders with attribute:
 
 {% highlight javascript %}
@@ -17,7 +15,7 @@ You can cancel only orders with attribute:
 
 
 ```
-PUT /orders/uuid
+PUT /orders/:uuid
 ```
 
 uuid - uniqe order identifier

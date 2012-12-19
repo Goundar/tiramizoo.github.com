@@ -220,10 +220,10 @@ Order should have first status:
 #### Success response
 
 {% highlight bash %}
-curl -v -X PUT -H 'Content-Type: application/json' -d '{"state" : "cancelled" }' https://api-sandbox.tiramizoo.com/v1/orders/%order_uuid%?api_token=API_TOKEN
+curl -v -X PUT -H 'Content-Type: application/json' -d '{"state" : "cancelled" }' https://api-sandbox.tiramizoo.com/v1/orders/:order_uuid?api_token=API_TOKEN
 {% endhighlight %}
 
-%order_uuid% - uniqe order identifier
+order_uuid - uniqe order identifier
 
 `200 OK`
 
@@ -239,10 +239,10 @@ curl -v -X PUT -H 'Content-Type: application/json' -d '{"state" : "cancelled" }'
 #### Error response when order was already canceled
 
 {% highlight bash %}
-curl -v -X PUT -H 'Content-Type: application/json' -d '{"state" : "cancelled" }' https://api-sandbox.tiramizoo.com/v1/orders/%order_uuid%?api_token=API_TOKEN
+curl -v -X PUT -H 'Content-Type: application/json' -d '{"state" : "cancelled" }' https://api-sandbox.tiramizoo.com/v1/orders/:order_uuid?api_token=API_TOKEN
 {% endhighlight %}
 
-%order_uuid% - uniqe order identifier
+order_uuid - uniqe order identifier
 
 `422` Unprocessable Entity
 
