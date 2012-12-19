@@ -14,64 +14,39 @@ All requests require authentication (valid **API_TOKEN**  [More](/#api_tokens) )
 ```
 POST /orders?api_token=API_TOKEN
 ```
-
-{% highlight javascript %}
+{% highlight javascript %} 
 {
-  "uuid": "14bcab1a-b81d-483a-af86-04edcacd46aa",
-  "state": "processing",
-  "created_at": "2012-04-06T8:00:00.000Z",
-  "description": "bottle of wine",
-  "courier_information": "please knock, doorbell doesn't work",
-  "external_id": "11-22-33-44-55",
-  "merge_field": null,
-  "web_hook_url": "http://api.myshop.com/deliveries/update_state",
-  "items_price": 0,
-  "tracking_url": "https://tiramizoo.com/orders/BN1HMDCTYGE11/tracking_status",
-  "tracking_code": "BN1HM-DCTY-GE11",
-  "cancellable": false,
-  "signature": {
-    "requested": false,
-    "url": null,
-    "name": null
-  },
   "pickup": {
-    "address_line": "Im Dol 1",
+    "address_line_1": "Im Dol 1",
     "city": "Berlin",
     "postal_code": "14195",
     "country_code": "de",
-    "name": "Alice Muller",
-    "phone_number": "+49000222333",
-    "email": "deliver@germany.de",
-    "after": "2012-04-06T10:00:00.000Z",
-    "before": "2012-04-06T12:00:00.000Z"
+    "name": "Alice Icealay",
+    "phone_number": "+491234567890",
+    "email": "alice@icealay.de",
+    "before": "2012-04-06T10:00:00.000Z"
+    "after": "2012-04-06T10:00:00.000Z"
+
   },
   "delivery": {
-    "address_line": "Thujaweg 1",
+    "address_line_1": "Thujaweg 1",
+    "address_line_2": "Ground floor",
     "city": "Berlin",
     "postal_code": "12437",
     "country_code": "de",
-    "name": "Bob Obama",
-    "phone_number": "+49099999999",
-    "email": "bob@obama.de"
-    "after": "2012-04-06T14:00:00.000Z",
-    "before": "2012-04-06T15:00:00.000Z"
+    "name": "Bob Obbay",
+    "phone_number": "+490987654321",
+    "email": "bob@obbay.de"
   },
-  "price": {
-    "net": 664,
-    "gross": 790,
-    "currency": "EUR",
-    "tax_rate": 19,
-    "tax": 126
-  },
-  "items": [
-    {
-      "width": 48,
-      "height": 39,
-      "length": 40,
-      "weight": 20,
-      "quantity": 1
-    }
-  ]
+  "description": "rubber chickens and chunky bacon",
+  "web_hook_url": "http://api.myshop.com/deliveries/update_state",
+  "external_id": "123-456-789",
+  "items": [{
+    "width": 2,
+    "height": 8.2,
+    "length": 5,
+    "weight": 2
+  }]
 }
 {% endhighlight %}
 
@@ -138,12 +113,15 @@ GET /orders?external_id=EXTERNAL_ID&page=PAGE&api_token=API_TOKEN
 ```
 
 external_id - an optional param with custom id that enables connecting tiramizoo orders with your internal infrastructure. This id does not need
+  to be unique and can have variable length.
 
 page - an optional param (by default first page is returned)
 
 #### Response
 
 * `200 OK`
+
+Example response:
 
 {% highlight javascript %}
 {
@@ -231,6 +209,8 @@ uuid - uniqe order identifier
 #### Response
 
 * `200 OK`
+
+Example response:
 
 {% highlight javascript %}
 {

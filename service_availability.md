@@ -18,6 +18,9 @@ COUNTRY_CODE, DELIVERY_POSTAL_CODE, PICKUP_POSTAL_CODE are required
 #### Response
 
 * `200 OK` 
+
+Example response:
+
 {% highlight javascript %}
 {
   "open_hours": [8, 20],
