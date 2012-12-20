@@ -17,7 +17,7 @@ POST /orders?api_token=API_TOKEN
 {% highlight javascript %} 
 {
   "pickup": {
-    "address_line_1": "Im Dol 1",
+    "address_line": "Im Dol 1",
     "city": "Berlin",
     "postal_code": "14195",
     "country_code": "de",
@@ -29,8 +29,7 @@ POST /orders?api_token=API_TOKEN
 
   },
   "delivery": {
-    "address_line_1": "Thujaweg 1",
-    "address_line_2": "Ground floor",
+    "address_line": "Thujaweg 1",
     "city": "Berlin",
     "postal_code": "12437",
     "country_code": "de",
