@@ -9,9 +9,9 @@ This API provides informations:
 
 ### Generate question
 
-```
+{% highlight bash %}
 GET /api/v1/service_availability?country_code=COUNTRY_CODE&delivery_postal_code=DELIVERY_POSTAL_CODE&pickup_postal_code=PICKUP_POSTAL_CODE
-```
+{% endhighlight %}
 
 COUNTRY_CODE, DELIVERY_POSTAL_CODE, PICKUP_POSTAL_CODE are required
 
