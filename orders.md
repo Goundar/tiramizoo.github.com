@@ -56,9 +56,9 @@ POST /orders?api_token=API_TOKEN
   to learn more about web hooks.
 * `external_id` - an optional param with custom id that enables connecting
   tiramizoo orders with your internal infrastructure. This id does not need
-  to be unique and can have variable length.
-* `courier_information` - an optional information for courier.
-* `merge_field` - an optional string value that will be passed to your order.
+  to be unique and can have variable length. (max length: 255 chars)
+* `merge_field` - an optional string value that will be passed to your order. (max length: 65535 chars)
+* `courier_information` - an optional information for courier. (max length: 255 chars)
 * `items` - an array containing measurements of at least one item.
   `width`, `height`, `length` are required dimensions of your package
   in cm and `weight` in kg. Optional `quantity` parameter contains a
@@ -66,11 +66,11 @@ POST /orders?api_token=API_TOKEN
 * `pickup`, `delivery` are required parameters cointaining addresses
    from where to pick your items up and where to deliver them and information
    about people responsible for sending and receiving the delivery.
-  * `name` - required string containing name
+  * `name` - required string containing name (max length: 255 chars)
   * `phone_number` - required string containing phone number
   * `email` - optional string containing email address
   * `address_line` - required string containing street name and
-    building number.
+    building number. (max length: 255 chars)
   * `city` - optional string containing city name
   * `postal_code` - required string containing postal code
   * `country_code` - required string containing country code
