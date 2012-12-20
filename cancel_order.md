@@ -13,7 +13,7 @@ You can cancel only orders with attribute:
 }
 {% endhighlight %}
 
-It require authentication (valid **API_TOKEN**  [More](/#api_tokens) )
+Requires authentication (valid **API_TOKEN** [More](/#api_tokens) )
 
 ```
 PUT /orders/:uuid?api_token=API_TOKEN

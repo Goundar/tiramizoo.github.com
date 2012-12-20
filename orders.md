@@ -35,7 +35,9 @@ POST /orders?api_token=API_TOKEN
     "country_code": "de",
     "name": "Bob Obbay",
     "phone_number": "+490987654321",
-    "email": "bob@obbay.de"
+    "email": "bob@obbay.de",
+    "before": "2012-04-06T11:30:00.000Z"
+    "after": "2012-04-06T11:30:00.000Z"
   },
   "description": "rubber chickens and chunky bacon",
   "web_hook_url": "http://api.myshop.com/deliveries/update_state",
