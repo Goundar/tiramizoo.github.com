@@ -107,7 +107,7 @@ Response body contains the same information as in [Order Show request](/orders.h
 }
 {% endhighlight %}
 
-### Show Orders
+### List Orders
 
 ```
 GET /orders?external_id=EXTERNAL_ID&page=PAGE&api_token=API_TOKEN
