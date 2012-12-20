@@ -24,7 +24,7 @@ POST /orders?api_token=API_TOKEN
     "name": "Alice Icealay",
     "phone_number": "+491234567890",
     "email": "alice@icealay.de",
-    "before": "2012-04-06T10:00:00.000Z"
+    "before": "2012-04-06T10:00:00.000Z",
     "after": "2012-04-06T10:00:00.000Z"
 
   },
