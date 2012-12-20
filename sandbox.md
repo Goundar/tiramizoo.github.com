@@ -6,7 +6,7 @@ title: Sandbox
 You can access [https://sandbox.tiramizoo.com](https://sandbox.tiramizoo.com) for testing purposes.
 All api requests should point to [https://api-sandbox.tiramizoo.com](https://api-sandbox.tiramizoo.com)
 
-After registering account at the sandbox (that is just a copy of the production application), the sandbox API token 
+After registering account at the sandbox (that is just a copy of the production application), the sandbox API token
 can be found on the profile page ([https://sandbox.tiramizoo.com/dashboard/user/edit](https://sandbox.tiramizoo.com/dashboard/user/edit)).
 
 All orders and payments will not be dispatched to a courier, however the user will be able to try out tiramizoo and use it for
@@ -27,7 +27,7 @@ curl -H 'Content-Type: application/json' -d '{"pickup_postal_code": "14195","del
 #### Successs response
 
 {% highlight javascript %}
-{	
+{
 	"net" : 664,
 	"tax_rate" : 19,
 	"currency" : "EUR",
@@ -56,7 +56,7 @@ curl -H 'Content-Type: application/json' -d '{"pickup_postal_code": "14195","del
 }
 {% endhighlight %}
 
-## Orders  
+## Orders
 
 All test requests require valid **API_TOKEN** ([https://sandbox.tiramizoo.com/dashboard/user/edit](https://sandbox.tiramizoo.com/dashboard/user/edit))
 
@@ -215,7 +215,7 @@ or
 Order should have first status:
 {% highlight javascript %}
 {
-  "cancellable": true 
+  "cancellable": true
 }
 {% endhighlight %}
 
@@ -233,9 +233,9 @@ Example response:
 
 {% highlight bash %}
 {
-	"uuid": "%order_uuid", 
-	"state": "cancelled", 
-	"created_at": 
+	"uuid": "%order_uuid",
+	"state": "cancelled",
+	"created_at":
 	...
 }
 {% endhighlight %}
@@ -443,7 +443,7 @@ order_uuid - uniqe order identifier
 #### Success response
 
 {% highlight bash %}
-curl -v -H 'Content-Type: application/json' https://api-sandbox.tiramizoo.com/api/v1/service_availability?country_code=de&delivery_postal_code=14195&pickup_postal_code=14195
+curl -v -H 'Content-Type: application/json' https://api-sandbox.tiramizoo.com/v1/service_availability?country_code=de&delivery_postal_code=14195&pickup_postal_code=14195
 {% endhighlight %}
 
 * `200 OK`
@@ -462,10 +462,10 @@ Example response:
   }
 {% endhighlight %}
 
-#### Error response when country code or postal codes incorrect 
+#### Error response when country code or postal codes incorrect
 
 {% highlight bash %}
-curl -v -H 'Content-Type: application/json' https://api-sandbox.tiramizoo.com/api/v1/service_availability?country_code=de&delivery_postal_code=14195&pickup_postal_code=10
+curl -v -H 'Content-Type: application/json' https://api-sandbox.tiramizoo.com/v1/service_availability?country_code=de&delivery_postal_code=14195&pickup_postal_code=10
 {% endhighlight %}
 
 
