@@ -18,14 +18,18 @@ COUNTRY_CODE, DELIVERY_POSTAL_CODE, PICKUP_POSTAL_CODE are required
 #### Response
 
 * `200 OK` 
+
+Example response:
+
 {% highlight javascript %}
 {
-  "open_hours": [8, 20],
-  "closed_days": [
-    {"year": 2012, "month": 12, "day": 24},
-    {"year": 2012, "month": 12, "day": 24},
-    {"year": 2012, "month": 12, "day": 30}
-  ]
+  "2012-04-16" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 20, "minutes" => 0}},
+  "2012-04-17" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 20, "minutes" => 0}},
+  "2012-04-19" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 12, "minutes" => 0}},
+  "2012-04-20" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 20, "minutes" => 0}},
+  "2012-04-21" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 11, "minutes" => 0}},
+  "2012-04-22" => {"from" => {"hours" => 9, "minutes" => 0}, "to" => {"hours" => 13, "minutes" => 0}},
+  "2012-04-23" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 20, "minutes" => 0}}
 }
 {% endhighlight %}
 

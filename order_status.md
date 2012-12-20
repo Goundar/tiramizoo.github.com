@@ -25,13 +25,19 @@ Keep in mind that the order in which we `POST`
 those status changes is not guaranteed, though usually they are ordered by the
 timestamp of the status change.
 
+#### Airbrake support
+
+Additionaly you can provide your AIRBRAKE_API_KEY ([More about Airbrake](https://airbrakeapp.com/pages/home) ) on [www.tiramizoo.com/dashboard/development_settings/edit](www.tiramizoo.com/dashboard/development_settings/edit) 
+
+and in a case web hook notification fails we will send you error notification to your airbrake account 
+
 ### Tracking Url 
 
 When you successfully create an order, the response contain tracking_url 
 
 On tracking_url you can check current status of your order
 
-Example request ([more informations](/sandbox.html)):
+#### Example of creation new order:
 
 {% highlight bash %}
 curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T11:30:00.000Z", "before":"2012-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T11:30:00.000Z", "before":"2012-12-14T13:00:00.000Z"}, "items":[{"width":48, "height":39, "length":40, "weight":21, "quantity":1}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
@@ -41,8 +47,14 @@ curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge met
 
 {% highlight javascript %}
 [
-  { "tracking_url" : "https://api-sandbox.tiramizoo.com/orders/TRACKING_CODE/tracking_status" }
+  ...
+  { "tracking_url" : "https://sandbox.tiramizoo.com/orders/TRACKING_CODE/tracking_status" }
+  ...
 ]
 {% endhighlight %}
 
 TRACKING_CODE - uniq order identifier
+
+#### Screenshot example of tracking_url 
+
+![Tracking url webpage](/assets/images/tracking_status.png)
