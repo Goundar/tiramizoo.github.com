@@ -23,12 +23,19 @@ p {
   line-height: 1.5em;
 }
 
-h3 {
+h2, h3 {
   margin-top: 40px;
+}
+h4 {
+  margin-top: 20px;
 }
 
 ul li {
   line-height: 1.5em;
+}
+
+ul li ul {
+  margin-bottom: 30px;
 }
 
 ul li ul li {
