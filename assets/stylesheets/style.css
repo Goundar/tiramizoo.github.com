@@ -17,3 +17,21 @@ footer {
   text-align: center;
   color: #bbb;
 }
+
+p {
+  margin-bottom: 20px;
+  line-height: 1.5em;
+}
+
+h3 {
+  margin-top: 40px;
+}
+
+ul li {
+  line-height: 1.5em;
+}
+
+ul li ul li {
+  line-height: 1.5em;
+  margin-bottom: 10px;
+}
