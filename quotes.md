@@ -15,6 +15,15 @@ POST /quotes
 {% highlight javascript %}
 {
   "pickup_postal_code": "14195",
+  "delivery_postal_code": "12437"
+}
+{% endhighlight %}
+
+or to validate items also:
+
+{% highlight javascript %}
+{
+  "pickup_postal_code": "14195",
   "delivery_postal_code": "12437",
   "items": [
     {
@@ -35,27 +44,18 @@ POST /quotes
 {% endhighlight %}
 
 * `pickup_postal_code` required string containing pickup postal code
-* `delivery_postal_code` required string containing pickup postal code
-* `items` - an array containing measurements of at least one item.
+* `delivery_postal_code` required string containing delivery postal code
+* `items` - optional array containing measurements of at least one item.
   `width`, `height`, `length` are required dimensions of your package
   in cm and `weight` in kg. Optional `quantity` parameter contains a
   number of items to deliver (default is 1).
 
 #### Response
 
-* `200 OK` - Quote(s) were created, response body contains the quote.
+* `200 OK` - Quote was validated without any error
 {% highlight javascript %}
-{
-  "net": 664,
-  "gross": 790,
-  "tax_rate": 19,
-  "tax": 126,
-  "currency": "EUR"
-}
+{}
 {% endhighlight %}
-
-* `net`, `gross` and `tax` contain values in cents.
-* `tax` is in percents
 
 #### Errors
 

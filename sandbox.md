@@ -21,19 +21,13 @@ The sandbox only has quotes for Berlin, Germany defined, so please keep that in 
 ## Quotes
 
 {% highlight bash %}
-curl -H 'Content-Type: application/json' -d '{"pickup_postal_code": "14195","delivery_postal_code": "14195","items":[{"width":42,"height":59,"length":3,"weight":5}]}' https://api-sandbox.tiramizoo.com/v1/quotes
+curl -H 'Content-Type: application/json' -d '{"pickup_postal_code": "14195","delivery_postal_code": "14195"}' https://api-sandbox.tiramizoo.com/v1/quotes
 {% endhighlight %}
 
 #### Successs response
 
 {% highlight javascript %}
-{
-	"net" : 664,
-	"tax_rate" : 19,
-	"currency" : "EUR",
-	"tax" : 126,
-	"gross" : 790
-}
+{}
 {% endhighlight %}
 
 #### Error response when package is too big
@@ -329,13 +323,6 @@ Example response:
       "after": "2012-12-19T20:00:00+01:00",
       "before": "2012-12-19T21:30:00+01:00"
     },
-    "price": {
-      "net": 664,
-      "gross": 790,
-      "currency": "EUR",
-      "tax_rate": 19,
-      "tax": 126
-    },
     "items": [{
       "width": 20.0,
       "height": 30.0,
@@ -408,13 +395,6 @@ Example response:
     "email": "bob@obama.de"
     "after": "2012-04-06T14:00:00.000Z",
     "before": "2012-04-06T15:00:00.000Z"
-  },
-  "price": {
-    "net": 664,
-    "gross": 790,
-    "currency": "EUR",
-    "tax_rate": 19,
-    "tax": 126
   },
   "items": [
     {
