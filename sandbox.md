@@ -7,7 +7,7 @@ You can access [https://sandbox.tiramizoo.com](https://sandbox.tiramizoo.com) fo
 All api requests should point to [https://api-sandbox.tiramizoo.com](https://api-sandbox.tiramizoo.com)
 
 After registering account at the sandbox (that is just a copy of the production application), the sandbox API token
-can be found on the profile page ([https://sandbox.tiramizoo.com/dashboard/user/edit](https://sandbox.tiramizoo.com/dashboard/user/edit)).
+can be found on the profile page ([https://sandbox.tiramizoo.com/dashboard/development_settings/edit](https://sandbox.tiramizoo.com/dashboard/development_settings/edit)).
 
 All orders and payments will not be dispatched to a courier, however the user will be able to try out tiramizoo and use it for
 testing purposes.
