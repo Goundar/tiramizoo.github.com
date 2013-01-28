@@ -46,7 +46,8 @@ POST /orders?api_token=API_TOKEN
     "width": 2,
     "height": 8.2,
     "length": 5,
-    "weight": 2
+    "weight": 2,
+    "description": "chunky bacon"
   }]
 }
 {% endhighlight %}
@@ -174,7 +175,8 @@ Example response:
       "height": 30.0,
       "length": 40.0,
       "weight": 1.0,
-      "quantity": 1
+      "quantity": 1,
+      "description": "chunky bacon"
     }]
   }, {
     "uuid": "9afb760c-7a74-4e3c-9a4e-4258d969db00",
@@ -253,7 +255,8 @@ Example response:
       "height": 39,
       "length": 40,
       "weight": 20,
-      "quantity": 1
+      "quantity": 1,
+      "description": "chunky bacon"
     }
   ]
 }
