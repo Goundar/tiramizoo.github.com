@@ -14,7 +14,7 @@ All requests require authentication (valid **API_TOKEN**  [More](/#api_tokens) )
 ```
 POST /orders?api_token=API_TOKEN
 ```
-{% highlight javascript %} 
+{% highlight javascript %}
 {
   "pickup": {
     "address_line": "Im Dol 1",
@@ -170,13 +170,6 @@ Example response:
       "after": "2012-12-19T20:00:00+01:00",
       "before": "2012-12-19T21:30:00+01:00"
     },
-    "price": {
-      "net": 664,
-      "gross": 790,
-      "currency": "EUR",
-      "tax_rate": 19,
-      "tax": 126
-    },
     "items": [{
       "width": 20.0,
       "height": 30.0,
@@ -256,13 +249,6 @@ Example response:
     "after": "2012-04-06T14:00:00.000Z",
     "before": "2012-04-06T15:00:00.000Z"
   },
-  "price": {
-    "net": 664,
-    "gross": 790,
-    "currency": "EUR",
-    "tax_rate": 19,
-    "tax": 126
-  },
   "items": [
     {
       "width": 48,
@@ -280,6 +266,5 @@ Example response:
 
 * `404 Not Found` - Order with provided UUID was not found
 * `401 Unauthorized` - Request requires authentication
-
 
 [Examples](/sandbox.html#orders)

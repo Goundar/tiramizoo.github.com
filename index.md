@@ -3,21 +3,20 @@ layout: page
 title: Overview
 ---
 
-
 You can easily offer the Tiramizoo delivery service to your customers, within your current
-e-commerce platform. Either download and install one of our plugins (soon to come, we are working 
+e-commerce platform. Either download and install one of our plugins (soon to come, we are working
 on an OXID plugin release in beginning of december) or do a custom integration by
 programming against the public REST/JSON API. The API is "eat your own
 dogfood" style - tiramizoo uses it internally for the "book a courier"
 website, administration and plugins, so you can count that it is well maintained.
 
 For a detailed overview on how the workflow with tiramizoo.com looks like, take a look at the
-PDF Guide at [our retailers page](https://www.tiramizoo.com/retailers). Note: The guide is 
-beeing worked on and a little bit outdated. It only contains information about the delivery 
-workflow with an offer process. This is not the case anymore - we now directly accept deliveries 
+PDF Guide at [our retailers page](https://www.tiramizoo.com/retailers). Note: The guide is
+beeing worked on and a little bit outdated. It only contains information about the delivery
+workflow with an offer process. This is not the case anymore - we now directly accept deliveries
 without creating an offer first.
 
-For testing purposes use the [tiramizoo.com sandbox](/sandbox.html). It's a full copy of the production environment 
+For testing purposes use the [tiramizoo.com sandbox](/sandbox.html). It's a full copy of the production environment
 except no delivery you trigger there is dispatched to our couriers.
 
 The tiramizoo.com API uses the **HTTP** protocol for communication and **JSON**
@@ -37,7 +36,7 @@ If you encounter a problem when using the API, please
 
 
 For accessing the API - either via a plugin or via the API directly - you
-will need an API token. Please register a free account at [tiramizoo.com](https://www.tiramizoo.com)
+will need an API token. Please register an account at [tiramizoo.com](https://www.tiramizoo.com)
 with username and password or via facebook in order to get one. The API token
 can be found via Profile / Edit profile when logged in.
 
@@ -83,7 +82,6 @@ curl -H 'Content-Type: application/json' -d '{
   ]
 }' "https://api.tiramizoo.com/v1/quotes"
 {% endhighlight %}
-
 
 {% highlight bash %}
 curl -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","delivery_postal_code":"12437","items":[{"width":2,"height":8.2,"length":5,"weight":2},{"width":20.5,"height":82,"length":50,"weight":7.9,"quantity":42}]}' "https://api.tiramizoo.com/v1/quotes"
