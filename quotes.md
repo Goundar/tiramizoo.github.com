@@ -25,7 +25,7 @@ or to validate items also:
 {
   "pickup_postal_code": "14195",
   "delivery_postal_code": "12437",
-  "items": [
+  "packages": [
     {
       "width": 2,
       "height": 8.2,
@@ -45,10 +45,10 @@ or to validate items also:
 
 * `pickup_postal_code` required string containing pickup postal code
 * `delivery_postal_code` required string containing delivery postal code
-* `items` - optional array containing measurements of at least one item.
+* `packages` (`items` will be deprecated) - optional array containing measurements of at least one package.
   `width`, `height`, `length` are required dimensions of your package
   in cm and `weight` in kg. Optional `quantity` parameter contains a
-  number of items to deliver (default is 1).
+  number of packages to deliver (default is 1).
 
 #### Response
 
