@@ -65,9 +65,9 @@ POST /orders?api_token=API_TOKEN
 * `packages` (`items` will be deprecated) - an array containing measurements of at least one item.
   `width`, `height`, `length` are required dimensions of your package
   in cm and `weight` in kg. Optional `quantity` parameter contains a
-  number of items to deliver (default is 1).
+  number of packages to deliver (default is 1).
 * `pickup`, `delivery` are required parameters cointaining addresses
-   from where to pick your items up and where to deliver them and information
+   from where to pick your packages up and where to deliver them and information
    about people responsible for sending and receiving the delivery.
   * `name` - required string containing name (max length: 255 chars)
   * `phone_number` - required string containing phone number
@@ -139,7 +139,7 @@ Example response:
     "external_id": "44444444422222222",
     "merge_field": null,
     "web_hook_url": "http://api.myshop.com/deliveries/update_state",
-    "items_price": null,
+    "packages_price": null,
     "tracking_url": "https://api-sandbox.tiramizoo.com/orders/0FAABYLJUZIWW/tracking_status",
     "tracking_code": "0FAAB-YLJU-ZIWW",
     "cancellable": true,
@@ -218,7 +218,7 @@ Example response:
   "external_id": "11-22-33-44-55",
   "merge_field": null,
   "web_hook_url": "http://api.myshop.com/deliveries/update_state",
-  "items_price": 0,
+  "packages_price": 0,
   "tracking_url": "https://tiramizoo.com/orders/BN1HMDCTYGE11/tracking_status",
   "tracking_code": "BN1HM-DCTY-GE11",
   "cancellable": false,
