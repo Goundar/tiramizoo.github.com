@@ -19,7 +19,7 @@ POST /quotes
 }
 {% endhighlight %}
 
-or to validate items also:
+or to validate packages also:
 
 {% highlight javascript %}
 {
