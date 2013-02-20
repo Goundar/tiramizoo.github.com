@@ -42,7 +42,7 @@ POST /orders?api_token=API_TOKEN
   "description": "rubber chickens and chunky bacon",
   "web_hook_url": "http://api.myshop.com/deliveries/update_state",
   "external_id": "123-456-789",
-  "items": [{
+  "packages": [{
     "width": 2,
     "height": 8.2,
     "length": 5,
@@ -62,7 +62,7 @@ POST /orders?api_token=API_TOKEN
   to be unique and can have variable length. (max length: 255 chars)
 * `merge_field` - an optional string value that will be passed to your order. (max length: 65535 chars)
 * `courier_information` - an optional information for courier. (max length: 255 chars)
-* `items` - an array containing measurements of at least one item.
+* `packages` (`items` will be deprecated) - an array containing measurements of at least one item.
   `width`, `height`, `length` are required dimensions of your package
   in cm and `weight` in kg. Optional `quantity` parameter contains a
   number of items to deliver (default is 1).
@@ -170,7 +170,7 @@ Example response:
       "after": "2012-12-19T20:00:00+01:00",
       "before": "2012-12-19T21:30:00+01:00"
     },
-    "items": [{
+    "packages": [{
       "width": 20.0,
       "height": 30.0,
       "length": 40.0,
@@ -249,7 +249,7 @@ Example response:
     "after": "2012-04-06T14:00:00.000Z",
     "before": "2012-04-06T15:00:00.000Z"
   },
-  "items": [
+  "packages": [
     {
       "width": 48,
       "height": 39,
