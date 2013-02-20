@@ -4,8 +4,7 @@ title: Overview
 ---
 
 You can easily offer the Tiramizoo delivery service to your customers, within your current
-e-commerce platform. Either download and install one of our plugins (soon to come, we are working
-on an OXID plugin release in beginning of december) or do a custom integration by
+e-commerce platform. Either download and install our [OXID plugin](https://github.com/tiramizoo/oxid-plugin) or do a custom integration by
 programming against the public REST/JSON API. The API is "eat your own
 dogfood" style - tiramizoo uses it internally for the "book a courier"
 website, administration and plugins, so you can count that it is well maintained.
