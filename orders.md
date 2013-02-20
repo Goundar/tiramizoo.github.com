@@ -52,7 +52,7 @@ POST /orders?api_token=API_TOKEN
 }
 {% endhighlight %}
 
-* `description` - a short description of the item(s) that are going to
+* `description` - a short description of the package(s) that are going to
   be delivered.
 * `web_hook_url` - an optional param with an URL to be notified when the
   order's state changes. Please check the [Order Status](/order_status.html)
@@ -62,7 +62,7 @@ POST /orders?api_token=API_TOKEN
   to be unique and can have variable length. (max length: 255 chars)
 * `merge_field` - an optional string value that will be passed to your order. (max length: 65535 chars)
 * `courier_information` - an optional information for courier. (max length: 255 chars)
-* `packages` (`items` will be deprecated) - an array containing measurements of at least one item.
+* `packages` (`items` will be deprecated) - an array containing measurements of at least one package.
   `width`, `height`, `length` are required dimensions of your package
   in cm and `weight` in kg. Optional `quantity` parameter contains a
   number of packages to deliver (default is 1).
