@@ -50,6 +50,56 @@ curl -H 'Content-Type: application/json' -d '{"pickup_postal_code": "14195","del
 }
 {% endhighlight %}
 
+## Bulk Orders
+
+All test requests require valid **API_TOKEN** ([https://sandbox.tiramizoo.com/dashboard/user/edit](https://sandbox.tiramizoo.com/dashboard/user/edit))
+
+* `401 Unauthorized` - API response when no or wrong API_TOKEN
+
+### Creation
+
+#### Successs response
+
+{% highlight bash %}
+curl -v -X POST -H 'Content-Type: application/json' -d '[{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "packages":[{"width":48, "height":39, "length":40, "weight":21, "quantity":1, "description": "metal bowl"}]}]' http://localhost:9292/api/v1/bulk/orders?api_token=API_TOKEN
+{% endhighlight %}
+
+* `201 Created`
+
+{% highlight javascript %}
+[
+  {...}
+]
+{% endhighlight %}
+
+#### Error responses
+
+For every order if errors occure response syntax is the same:
+{% highlight bash %}
+[
+"field": the atribute on which error occured
+"code": error code
+"message": error full message
+]
+{% endhighlight %}
+
+Example request with invalid packages 
+
+{% highlight bash %}
+curl -v -X POST -H 'Content-Type: application/json' -d '[{"description":"huge metal br_company", "phone_number":"123456", "postal_code":"14195", "after":"2013-12-14T11:30:00.000Z", "before":"2013-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2013-12-14T11:30:00.000Z", "before":"2013-12-14T13:00:00.000Z"}, "packages":[{"width":48, "height":39, "length":40000, "weight":21, "quantity":1, "description": "metal bowl"}]}]' http://localhost:9292/api/v1/bulk/orders?api_token=API_TOKEN
+{% endhighlight %}
+
+* `422 Unprocessable Entity`
+
+{% highlight javascript %}
+[
+  [{"field":"packages",
+  "code":"are too big",
+  "message":"Packages are too big"
+  }]
+]
+{% endhighlight %}
+
 ## Orders
 
 All test requests require valid **API_TOKEN** ([https://sandbox.tiramizoo.com/dashboard/user/edit](https://sandbox.tiramizoo.com/dashboard/user/edit))
@@ -61,7 +111,7 @@ All test requests require valid **API_TOKEN** ([https://sandbox.tiramizoo.com/da
 #### Successs response
 
 {% highlight bash %}
-curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T11:30:00.000Z", "before":"2012-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T11:30:00.000Z", "before":"2012-12-14T13:00:00.000Z"}, "items":[{"width":48, "height":39, "length":40, "weight":21, "quantity":1, "description": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
+curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "items":[{"width":48, "height":39, "length":40, "weight":21, "quantity":1, "description": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
 {% endhighlight %}
 
 * `201 Created`
@@ -75,7 +125,7 @@ curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge met
 #### Error response when package's items are invalid
 
 {% highlight bash %}
-curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T11:30:00.000Z", "before":"2012-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T11:30:00.000Z", "before":"2012-12-14T13:00:00.000Z"}, "items":[{"width":48, "height":39, "length":0, "weight":21, "quantity":1, "description": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
+curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "items":[{"width":48, "height":39, "length":0, "weight":21, "quantity":1, "description": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
 {% endhighlight %}
 
 * `422 Unprocessable Entity`
@@ -95,7 +145,7 @@ curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge met
 #### Error response when package is too big
 
 {% highlight bash %}
-curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T11:30:00.000Z", "before":"2012-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T11:30:00.000Z", "before":"2012-12-14T13:00:00.000Z"}, "items":[{"width":48, "height":39, "length":400000, "weight":21, "quantity":1, "description": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
+curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "items":[{"width":48, "height":39, "length":400000, "weight":21, "quantity":1, "description": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
 {% endhighlight %}
 
 * `422 Unprocessable Entity`
@@ -117,7 +167,7 @@ curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge met
 In given example business open hours are 8:00 to 21:00
 
 {% highlight bash %}
-curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T22:00:00.000Z", "before":"2012-12-14T22:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T23:30:00.000Z", "before":"2012-12-14T23:30:00.000Z"}, "items":[{"width":48, "height":39, "length":400000, "weight":21, "quantity":1, "description": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
+curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T22:00:00.000Z", "before":"2023-12-14T22:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T23:30:00.000Z", "before":"2023-12-14T23:30:00.000Z"}, "items":[{"width":48, "height":39, "length":400000, "weight":21, "quantity":1, "description": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
 {% endhighlight %}
 
 * `422 Unprocessable Entity`
@@ -137,7 +187,7 @@ curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge met
 #### Error response when delivery time is ahead of pickup time less than 90 minutes
 
 {% highlight bash %}
-curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T23:00:00.000Z", "before":"2012-12-14T23:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T11:30:00.000Z", "before":"2012-12-14T13:00:00.000Z"}, "items":[{"width":48, "height":39, "length":40, "weight":21, "quantity":1, "quantity": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
+curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T23:00:00.000Z", "before":"2023-12-14T23:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "items":[{"width":48, "height":39, "length":40, "weight":21, "quantity":1, "quantity": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
 {% endhighlight %}
 
 * `422 Unprocessable Entity`
@@ -157,7 +207,7 @@ curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge met
 #### Error response when delivery time is ahead of pickup time more than 6 hours
 
 {% highlight bash %}
-curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T11:30:00.000Z", "before":"2012-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T23:30:00.000Z", "before":"2012-12-14T23:30:00.000Z"}, "items":[{"width":48, "height":39, "length":400000, "weight":21, "quantity":1, "description": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
+curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T23:30:00.000Z", "before":"2023-12-14T23:30:00.000Z"}, "items":[{"width":48, "height":39, "length":400000, "weight":21, "quantity":1, "description": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
 {% endhighlight %}
 
 * `422 Unprocessable Entity`
@@ -177,7 +227,7 @@ curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge met
 #### Error response when pickup or delivery postal code is invalid
 
 {% highlight bash %}
-curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"", "after":"2012-12-14T11:30:00.000Z", "before":"2012-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2012-12-14T11:30:00.000Z", "before":"2012-12-14T13:00:00.000Z"}, "items":[{"width":48, "height":39, "length":40, "weight":21, "quantity":1, "description": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
+curl -v -X POST -H 'Content-Type: application/json' -d '{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "items":[{"width":48, "height":39, "length":40, "weight":21, "quantity":1, "description": "metal bowl"}]}' https://api-sandbox.tiramizoo.com/v1/orders?api_token=API_TOKEN
 {% endhighlight %}
 
 * `422 Unprocessable Entity`
@@ -286,7 +336,7 @@ Example response:
   "orders": [{
     "uuid": "71e7acb2-3ed2-4137-ad62-446fb44f4299",
     "state": "processing",
-    "created_at": "2012-12-19T08:27:05+01:00",
+    "created_at": "2023-12-19T08:27:05+01:00",
     "description": "Original BUSH",
     "courier_information": null,
     "external_id": "44444444422222222",
@@ -309,8 +359,8 @@ Example response:
       "city": "M\u00fcnchen",
       "postal_code": "80639",
       "country_code": "de",
-      "after": "2012-12-19T20:00:00+01:00",
-      "before": "2012-12-19T22:00:00+01:00"
+      "after": "2023-12-19T20:00:00+01:00",
+      "before": "2023-12-19T22:00:00+01:00"
     },
     "delivery": {
       "name": "Your Company Name",
@@ -320,8 +370,8 @@ Example response:
       "city": "Nettelsee",
       "postal_code": "80331",
       "country_code": "de",
-      "after": "2012-12-19T20:00:00+01:00",
-      "before": "2012-12-19T21:30:00+01:00"
+      "after": "2023-12-19T20:00:00+01:00",
+      "before": "2023-12-19T21:30:00+01:00"
     },
     "items": [{
       "width": 20.0,
@@ -334,7 +384,7 @@ Example response:
   }, {
     "uuid": "9afb760c-7a74-4e3c-9a4e-4258d969db00",
     "state": "processing",
-    "created_at": "2012-12-18T20:59:17+01:00",
+    "created_at": "2023-12-18T20:59:17+01:00",
     "description": "Original BUSH",
     "courier_information": null,
     ...
@@ -360,7 +410,7 @@ Example response:
 {
   "uuid": "14bcab1a-b81d-483a-af86-04edcacd46aa",
   "state": "processing",
-  "created_at": "2012-04-06T8:00:00.000Z",
+  "created_at": "2023-04-06T8:00:00.000Z",
   "description": "bottle of wine",
   "courier_information": "please knock, doorbell doesn't work",
   "external_id": "11-22-33-44-55",
@@ -383,8 +433,8 @@ Example response:
     "name": "Alice Muller",
     "phone_number": "+49000222333",
     "email": "deliver@germany.de",
-    "after": "2012-04-06T10:00:00.000Z",
-    "before": "2012-04-06T12:00:00.000Z"
+    "after": "2023-04-06T10:00:00.000Z",
+    "before": "2023-04-06T12:00:00.000Z"
   },
   "delivery": {
     "address_line": "Thujaweg 1",
@@ -394,8 +444,8 @@ Example response:
     "name": "Bob Obama",
     "phone_number": "+49099999999",
     "email": "bob@obama.de"
-    "after": "2012-04-06T14:00:00.000Z",
-    "before": "2012-04-06T15:00:00.000Z"
+    "after": "2023-04-06T14:00:00.000Z",
+    "before": "2023-04-06T15:00:00.000Z"
   },
   "items": [
     {
@@ -420,6 +470,30 @@ order_uuid - uniqe order identifier
 
 * `404 Not Found`
 
+## Time windows
+
+{% highlight bash %}
+curl -v -H 'Content-Type: application/json' https://api-sandbox.tiramizoo.com/v1/time_windows?api_token=API_TOKEN
+{% endhighlight %}
+
+#### Successs response
+
+{% highlight javascript %}
+One example time window:
+
+{
+  "city":"berlin",
+  "pickup":{
+    "from":"2013-02-20T08:00:00Z",
+    "to":"2013-02-20T09:30:00Z"
+  },
+  "delivery":{
+    "from":"2013-02-20T08:00:00Z",
+    "to":"2013-02-20T09:30:00Z"
+  }
+}
+{% endhighlight %}
+
 ## Service Availability
 
 #### Success response
@@ -434,13 +508,13 @@ Example response:
 
 {% highlight bash %}
   {
-    "2012-04-16" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 20, "minutes" => 0}},
-    "2012-04-17" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 20, "minutes" => 0}},
-    "2012-04-19" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 12, "minutes" => 0}},
-    "2012-04-20" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 20, "minutes" => 0}},
-    "2012-04-21" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 11, "minutes" => 0}},
-    "2012-04-22" => {"from" => {"hours" => 9, "minutes" => 0}, "to" => {"hours" => 13, "minutes" => 0}},
-    "2012-04-23" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 20, "minutes" => 0}}
+    "2023-04-16" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 20, "minutes" => 0}},
+    "2023-04-17" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 20, "minutes" => 0}},
+    "2023-04-19" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 12, "minutes" => 0}},
+    "2023-04-20" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 20, "minutes" => 0}},
+    "2023-04-21" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 11, "minutes" => 0}},
+    "2023-04-22" => {"from" => {"hours" => 9, "minutes" => 0}, "to" => {"hours" => 13, "minutes" => 0}},
+    "2023-04-23" => {"from" => {"hours" => 8, "minutes" => 0}, "to" => {"hours" => 20, "minutes" => 0}}
   }
 {% endhighlight %}
 

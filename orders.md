@@ -18,26 +18,24 @@ POST /orders?api_token=API_TOKEN
 {
   "pickup": {
     "address_line": "Im Dol 1",
-    "city": "Berlin",
     "postal_code": "14195",
     "country_code": "de",
     "name": "Alice Icealay",
     "phone_number": "+491234567890",
     "email": "alice@icealay.de",
-    "before": "2012-04-06T10:00:00.000Z",
-    "after": "2012-04-06T10:00:00.000Z"
+    "before": "2023-04-06T10:00:00.000Z",
+    "after": "2023-04-06T10:00:00.000Z"
 
   },
   "delivery": {
     "address_line": "Thujaweg 1",
-    "city": "Berlin",
     "postal_code": "12437",
     "country_code": "de",
     "name": "Bob Obbay",
     "phone_number": "+490987654321",
     "email": "bob@obbay.de",
-    "before": "2012-04-06T11:30:00.000Z"
-    "after": "2012-04-06T11:30:00.000Z"
+    "before": "2023-04-06T11:30:00.000Z"
+    "after": "2023-04-06T11:30:00.000Z"
   },
   "description": "rubber chickens and chunky bacon",
   "web_hook_url": "http://api.myshop.com/deliveries/update_state",
@@ -74,7 +72,6 @@ POST /orders?api_token=API_TOKEN
   * `email` - optional string containing email address
   * `address_line` - required string containing street name and
     building number. (max length: 255 chars)
-  * `city` - optional string containing city name
   * `postal_code` - required string containing postal code
   * `country_code` - required string containing country code
 
@@ -133,7 +130,7 @@ Example response:
   "orders": [{
     "uuid": "71e7acb2-3ed2-4137-ad62-446fb44f4299",
     "state": "processing",
-    "created_at": "2012-12-19T08:27:05+01:00",
+    "created_at": "2023-12-19T08:27:05+01:00",
     "description": "Original BUSH",
     "courier_information": null,
     "external_id": "44444444422222222",
@@ -153,22 +150,20 @@ Example response:
       "phone_number": "485001122112",
       "email": "some@gmail.com",
       "address_line": "Guntherstrasse 16",
-      "city": "M\u00fcnchen",
       "postal_code": "80639",
       "country_code": "de",
-      "after": "2012-12-19T20:00:00+01:00",
-      "before": "2012-12-19T22:00:00+01:00"
+      "after": "2023-12-19T20:00:00+01:00",
+      "before": "2023-12-19T22:00:00+01:00"
     },
     "delivery": {
       "name": "Your Company Name",
       "phone_number": "217-8918712",
       "email": "another@tiramizoo.com",
       "address_line": "Maple Street 2425",
-      "city": "Nettelsee",
       "postal_code": "80331",
       "country_code": "de",
-      "after": "2012-12-19T20:00:00+01:00",
-      "before": "2012-12-19T21:30:00+01:00"
+      "after": "2023-12-19T20:00:00+01:00",
+      "before": "2023-12-19T21:30:00+01:00"
     },
     "packages": [{
       "width": 20.0,
@@ -181,7 +176,7 @@ Example response:
   }, {
     "uuid": "9afb760c-7a74-4e3c-9a4e-4258d969db00",
     "state": "processing",
-    "created_at": "2012-12-18T20:59:17+01:00",
+    "created_at": "2023-12-18T20:59:17+01:00",
     "description": "Original BUSH",
     "courier_information": null,
     ...
@@ -212,7 +207,7 @@ Example response:
 {
   "uuid": "14bcab1a-b81d-483a-af86-04edcacd46aa",
   "state": "processing",
-  "created_at": "2012-04-06T8:00:00.000Z",
+  "created_at": "2023-04-06T8:00:00.000Z",
   "description": "bottle of wine",
   "courier_information": "please knock, doorbell doesn't work",
   "external_id": "11-22-33-44-55",
@@ -229,25 +224,23 @@ Example response:
   },
   "pickup": {
     "address_line": "Im Dol 1",
-    "city": "Berlin",
     "postal_code": "14195",
     "country_code": "de",
     "name": "Alice Muller",
     "phone_number": "+49000222333",
     "email": "deliver@germany.de",
-    "after": "2012-04-06T10:00:00.000Z",
-    "before": "2012-04-06T12:00:00.000Z"
+    "after": "2023-04-06T10:00:00.000Z",
+    "before": "2023-04-06T12:00:00.000Z"
   },
   "delivery": {
     "address_line": "Thujaweg 1",
-    "city": "Berlin",
     "postal_code": "12437",
     "country_code": "de",
     "name": "Bob Obama",
     "phone_number": "+49099999999",
     "email": "bob@obama.de"
-    "after": "2012-04-06T14:00:00.000Z",
-    "before": "2012-04-06T15:00:00.000Z"
+    "after": "2023-04-06T14:00:00.000Z",
+    "before": "2023-04-06T15:00:00.000Z"
   },
   "packages": [
     {
@@ -267,4 +260,4 @@ Example response:
 * `404 Not Found` - Order with provided UUID was not found
 * `401 Unauthorized` - Request requires authentication
 
-[Examples](/sandbox.html#orders)
+[Examples](/sandbox.html#bulk_orders)
