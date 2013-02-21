@@ -59,7 +59,9 @@ POST /orders?api_token=API_TOKEN
   tiramizoo orders with your internal infrastructure. This id does not need
   to be unique and can have variable length. (max length: 255 chars)
 * `merge_field` - an optional string value that will be passed to your order. (max length: 65535 chars)
-* `courier_information` - an optional information for courier. (max length: 255 chars)
+* `courier_information` - an optional information for courier. This can be used for giving special explanations about
+  the pickup or delivery process or to specify a pickup code to let the courier prove his identity (e.g. 
+  "on pickup use identification code ABC" with a randomly generated code in place of ABC). (max length: 255 chars)
 * `packages` (`items` will be deprecated) - an array containing measurements of at least one package.
   `width`, `height`, `length` are required dimensions of your package
   in cm and `weight` in kg. Optional `quantity` parameter contains a
