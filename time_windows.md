@@ -78,7 +78,7 @@ Example response:
 
 * `404 Not Found` - Area with given postal code is not supported
 
-## version 1 (v1)
+## version 1 (v1) - deprecated and will be stopped at the latest at 01.08.2013
 
 ### List Time Windows
 
