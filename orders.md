@@ -34,7 +34,7 @@ POST /orders?api_token=API_TOKEN
     "name": "Bob Obbay",
     "phone_number": "+490987654321",
     "email": "bob@obbay.de",
-    "before": "2023-04-06T11:30:00.000Z"
+    "before": "2023-04-06T11:30:00.000Z",
     "after": "2023-04-06T11:30:00.000Z"
   },
   "description": "rubber chickens and chunky bacon",
