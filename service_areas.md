@@ -24,6 +24,7 @@ Example response:
   {
     "postal_codes": ["50667", "50667", ...],
     "time_windows": [{
+      "delivery_type": "express",
       "pickup":{
         "from":"2013-02-20T08:00:00Z",
         "to":"2013-02-20T09:30:00Z"
@@ -59,6 +60,7 @@ Example response:
 {
   "postal_codes": ["50667", "50667", ...],
   "time_windows": [{
+    "delivery_type": "express",
     "pickup": {
       "from": "2013-02-20T08:00:00Z",
       "to": "2013-02-20T09:30:00Z"
