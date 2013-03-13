@@ -9,11 +9,7 @@ programming against the public REST/JSON API. The API is "eat your own
 dogfood" style - tiramizoo uses it internally for the "book a courier"
 website, administration and plugins, so you can count that it is well maintained.
 
-For a detailed overview on how the workflow with tiramizoo.com looks like, take a look at the
-PDF Guide at [our retailers page](https://www.tiramizoo.com/retailers). Note: The guide is
-beeing worked on and a little bit outdated. It only contains information about the delivery
-workflow with an offer process. This is not the case anymore - we now directly accept deliveries
-without creating an offer first.
+For a detailed overview on how the workflow with tiramizoo.com looks like, please go to [our website](https://www.tiramizoo.com).
 
 For testing purposes use the [tiramizoo.com sandbox](/sandbox.html). It's a full copy of the production environment
 except no delivery you trigger there is dispatched to our couriers.
@@ -33,16 +29,19 @@ If you encounter a problem when using the API, please
 
 ### API Tokens
 
-
 For accessing the API - either via a plugin or via the API directly - you
-will need an API token. Please register an account at [tiramizoo.com](https://www.tiramizoo.com)
+will need an API token. Please register an test account at [sandbox.tiramizoo.com](https://sandbox.tiramizoo.com)
 with username and password or via facebook in order to get one. The API token
 can be found via Profile / Edit profile when logged in.
+
+To simplify integration in some examples test user's API token is used
+
+When ready with integration please register an account on our production system at [tiramizoo.com](https://tiramizoo.com)
 
 ### Versioning
 
 
-All API urls have to be prefixed with API version, e.g. `/v1/quotes`.
+All API urls have to be prefixed with API version, e.g. `/v1/orders`.
 
 ### Authentication
 
@@ -62,10 +61,10 @@ A minimal `POST` request to the **quotes** resource which doesn't require
 authentication:
 
 {% highlight bash %}
-curl -H 'Content-Type: application/json' -d '{
+curl -v -H 'Content-Type: application/json' -d '{
   "pickup_postal_code": "14195",
   "delivery_postal_code": "12437",
-  "items": [
+  "packages": [
     {
       "width": 2,
       "height": 8.2,
@@ -76,12 +75,12 @@ curl -H 'Content-Type: application/json' -d '{
       "height": 82,
       "length": 50,
       "weight": 7.9,
-      "quantity": 42
+      "quantity": 12
     }
   ]
-}' "https://api.tiramizoo.com/v1/quotes"
+}' "https://api-sandbox.tiramizoo.com/v1/quotes"
 {% endhighlight %}
 
 {% highlight bash %}
-curl -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","delivery_postal_code":"12437","items":[{"width":2,"height":8.2,"length":5,"weight":2},{"width":20.5,"height":82,"length":50,"weight":7.9,"quantity":42}]}' "https://api.tiramizoo.com/v1/quotes"
+curl -v -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","delivery_postal_code":"12437","packages":[{"width":2,"height":8.2,"length":5,"weight":2},{"width":20.5,"height":82,"length":50,"weight":7.9,"quantity":12}]}' "https://api-sandbox.tiramizoo.com/v1/quotes"
 {% endhighlight %}
