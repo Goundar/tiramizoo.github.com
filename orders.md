@@ -25,7 +25,6 @@ POST /orders?api_token=API_TOKEN
     "email": "alice@icealay.de",
     "before": "2023-04-06T10:00:00.000Z",
     "after": "2023-04-06T10:00:00.000Z"
-
   },
   "delivery": {
     "address_line": "Thujaweg 1",
@@ -50,8 +49,7 @@ POST /orders?api_token=API_TOKEN
 }
 {% endhighlight %}
 
-* `description` - a short description of the package(s) that are going to
-  be delivered.
+* `description` - a short description of the package(s) that are going to be delivered.
 * `web_hook_url` - an optional param with an URL to be notified when the
   order's state changes. Please check the [Order Status](/order_status.html)
   to learn more about web hooks.
@@ -60,33 +58,32 @@ POST /orders?api_token=API_TOKEN
   to be unique and can have variable length. (max length: 255 chars)
 * `merge_field` - an optional string value that will be passed to your order. (max length: 65535 chars)
 * `courier_information` - an optional information for courier. This can be used for giving special explanations about
-  the pickup or delivery process or to specify a pickup code to let the courier prove his identity (e.g. 
+  the pickup or delivery process or to specify a pickup code to let the courier prove his identity (e.g.
   "on pickup use identification code ABC" with a randomly generated code in place of ABC). (max length: 255 chars)
 * `packages` (`items` will be deprecated) - an array containing measurements of at least one package.
-  `width`, `height`, `length` are required dimensions of your package
-  in cm and `weight` in kg. Optional `quantity` parameter contains a
-  number of packages to deliver (default is 1).
-* `pickup`, `delivery` are required parameters cointaining addresses
-   from where to pick your packages up and where to deliver them and information
-   about people responsible for sending and receiving the delivery.
+  `width`, `height`, `length` are required dimensions of your package in cm and `weight` in kg. Optional `quantity` parameter contains a number of packages to deliver (default is 1).
+* `pickup`, `delivery` are required parameters cointaining addresses from where to pick your packages up and where to deliver them and information about people responsible for sending and receiving the delivery.
   * `name` - required string containing name (max length: 255 chars)
   * `phone_number` - required string containing phone number
   * `email` - optional string containing email address
-  * `address_line` - required string containing street name and
-    building number. (max length: 255 chars)
+  * `address_line` - required string containing street name and building number. (max length: 255 chars)
   * `postal_code` - required string containing postal code
   * `country_code` - required string containing country code
 
-* `pickup` and `delivery` `before` and  `after` - required date and time defining pickup window provided as UTC in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. Gap between `delivery[before]` and `pickup[after]` must be in 90 minutes to 6 hours.
+* `pickup` and `delivery` `before` and  `after` - required date and time defining pickup window provided as UTC in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. Distance between `delivery[before]` and `pickup[after]` must be at least 90 minutes but not longer than 6 hours.
 
 #### Response
 
 * `201 Created` - An Order was created, response body contains its
-  representation. A Location header contains URL of the newly created
-  Order. Courier will deliver the package according to specified
+  representation. Courier will deliver the package according to specified
   params.
 
 Response body contains the same information as in [Order Show request](/orders.html#show_order),
+
+##### Try it yourself #####
+{% highlight bash %}
+curl -v -H 'Content-Type: application/json' -d '{"pickup":{"address_line":"Im Dol 1","postal_code":"14195","country_code":"de","name":"Alice Icealay","phone_number":"+491234567890","email":"alice@icealay.de","before":"2023-04-06T10:00:00.000Z","after":"2023-04-06T10:00:00.000Z"},"delivery":{"address_line":"Thujaweg 1","postal_code":"12437","country_code":"de","name":"Bob Obbay","phone_number":"+490987654321","email":"bob@obbay.de","before":"2023-04-06T11:30:00.000Z","after":"2023-04-06T11:30:00.000Z"},"description":"rubber chickens and chunky bacon","web_hook_url":"http://api.myshop.com/deliveries/update_state","external_id":"123-456-789","packages":[{"width":2,"height":8.2,"length":5,"weight":2,"description":"chunky bacon"}]}' "https://api-sandbox.tiramizoo.com/v1/orders?api_token=5715edce6630959b0e9c5659d323eae4"
+{% endhighlight %}
 
 #### Errors
 
@@ -105,6 +102,11 @@ Response body contains the same information as in [Order Show request](/orders.h
     }
   ]
 }
+{% endhighlight %}
+
+##### Try it yourself #####
+{% highlight bash %}
+curl -v -H 'Content-Type: application/json' -d '{"pickup":{"address_line":"Im Dol 1","postal_code":"14195","country_code":"de","phone_number":"+491234567890","email":"alice@icealay.de","before":"2023-04-06T10:00:00.000Z","after":"2023-04-06T10:00:00.000Z"},"delivery":{"address_line":"Thujaweg 1","postal_code":"12437","country_code":"de","name":"Bob Obbay","phone_number":"+490987654321","email":"bob@obbay.de","before":"2023-04-06T11:30:00.000Z","after":"2023-04-06T11:30:00.000Z"},"description":"rubber chickens and chunky bacon","web_hook_url":"http://api.myshop.com/deliveries/update_state","external_id":"123-456-789","packages":[{"width":2,"height":8.2,"length":5,"weight":2,"description":"chunky bacon"}]}' "https://api-sandbox.tiramizoo.com/v1/orders?api_token=5715edce6630959b0e9c5659d323eae4"
 {% endhighlight %}
 
 ### List Orders
@@ -127,69 +129,86 @@ Example response:
 {% highlight javascript %}
 {
   "page": 1,
-  "total_pages": 5,
+  "total_pages": 1,
   "per_page": 25,
-  "orders": [{
-    "uuid": "71e7acb2-3ed2-4137-ad62-446fb44f4299",
-    "state": "processing",
-    "created_at": "2023-12-19T08:27:05+01:00",
-    "description": "Original BUSH",
-    "courier_information": null,
-    "external_id": "44444444422222222",
-    "merge_field": null,
-    "web_hook_url": "http://api.myshop.com/deliveries/update_state",
-    "packages_price": null,
-    "tracking_url": "https://api-sandbox.tiramizoo.com/orders/0FAABYLJUZIWW/tracking_status",
-    "tracking_code": "0FAAB-YLJU-ZIWW",
-    "cancellable": true,
-    "signature": {
-      "requested": false,
-      "url": null,
-      "name": null
+  "orders": [
+    {
+      "uuid": "a505ff78-67c5-4fbd-ab4f-a8db81f2c45a",
+      "state": "processing",
+      "created_at": "2013-03-12T11:13:46+01:00",
+      "description": "rubber chickens and chunky bacon",
+      "courier_information": null,
+      "external_id": "123-456-789",
+      "merge_field": null,
+      "web_hook_url": "http://api.myshop.com/deliveries/update_state",
+      "packages_price": null,
+      "tracking_url": "https://sandbox.tiramizoo.com/orders/10018A5TBYKI4/tracking_status",
+      "tracking_code": "10018-A5TB-YKI4",
+      "cancellable": true,
+      "hazard_index": 0,
+      "city_identifier": "berlin",
+      "signature": {
+        "url": null,
+        "name": null
+      },
+      "pickup": {
+        "name": "Alice Icealay",
+        "phone_number": "+491234567890",
+        "email": "alice@icealay.de",
+        "address_line": "Im Dol 1",
+        "city": "Berlin",
+        "postal_code": "14195",
+        "country_code": "de",
+        "after": "2023-04-06T12:00:00+02:00",
+        "before": "2023-04-06T12:00:00+02:00"
+      },
+      "delivery": {
+        "name": "Bob Obbay",
+        "phone_number": "+490987654321",
+        "email": "bob@obbay.de",
+        "address_line": "Thujaweg 1",
+        "city": "Berlin",
+        "postal_code": "12437",
+        "country_code": "de",
+        "after": "2023-04-06T13:30:00+02:00",
+        "before": "2023-04-06T13:30:00+02:00"
+      },
+      "packages": [
+        {
+          "width": 2,
+          "height": 8.2,
+          "length": 5,
+          "weight": 2,
+          "quantity": 1,
+          "description": "chunky bacon"
+        }
+      ],
     },
-    "pickup": {
-      "name": "Germany",
-      "phone_number": "485001122112",
-      "email": "some@gmail.com",
-      "address_line": "Guntherstrasse 16",
-      "postal_code": "80639",
-      "country_code": "de",
-      "after": "2023-12-19T20:00:00+01:00",
-      "before": "2023-12-19T22:00:00+01:00"
+    {
+      "uuid": "29ab1488-d1e8-4afb-b08c-dca142348f4d",
+      "state": "delivered",
+      "created_at": "2013-03-10T15:22:37+01:00",
+      ...
     },
-    "delivery": {
-      "name": "Your Company Name",
-      "phone_number": "217-8918712",
-      "email": "another@tiramizoo.com",
-      "address_line": "Maple Street 2425",
-      "postal_code": "80331",
-      "country_code": "de",
-      "after": "2023-12-19T20:00:00+01:00",
-      "before": "2023-12-19T21:30:00+01:00"
-    },
-    "packages": [{
-      "width": 20.0,
-      "height": 30.0,
-      "length": 40.0,
-      "weight": 1.0,
-      "quantity": 1,
-      "description": "chunky bacon"
-    }]
-  }, {
-    "uuid": "9afb760c-7a74-4e3c-9a4e-4258d969db00",
-    "state": "processing",
-    "created_at": "2023-12-18T20:59:17+01:00",
-    "description": "Original BUSH",
-    "courier_information": null,
     ...
-  }
+  ]
 }
 {% endhighlight %}
+
+##### Try it yourself #####
+{% highlight bash %}
+curl -v "https://api-sandbox.tiramizoo.com/v1/orders?external_id=123-456-789&page=1&api_token=5715edce6630959b0e9c5659d323eae4"
+{% endhighlight %}
+
 
 #### Errors
 
 * `401 Unauthorized` - Request requires authentication
 
+##### Try it yourself #####
+{% highlight bash %}
+curl -v "https://api-sandbox.tiramizoo.com/v1/orders?external_id=123-456-789&page=1"
+{% endhighlight %}
 
 ### Show Order
 
@@ -207,59 +226,71 @@ Example response:
 
 {% highlight javascript %}
 {
-  "uuid": "14bcab1a-b81d-483a-af86-04edcacd46aa",
+  "uuid": "a505ff78-67c5-4fbd-ab4f-a8db81f2c45a",
   "state": "processing",
-  "created_at": "2023-04-06T8:00:00.000Z",
-  "description": "bottle of wine",
-  "courier_information": "please knock, doorbell doesn't work",
-  "external_id": "11-22-33-44-55",
+  "created_at": "2013-03-12T11:13:46+01:00",
+  "description": "rubber chickens and chunky bacon",
+  "courier_information": null,
+  "external_id": "123-456-789",
   "merge_field": null,
   "web_hook_url": "http://api.myshop.com/deliveries/update_state",
-  "packages_price": 0,
-  "tracking_url": "https://tiramizoo.com/orders/BN1HMDCTYGE11/tracking_status",
-  "tracking_code": "BN1HM-DCTY-GE11",
-  "cancellable": false,
+  "packages_price": null,
+  "tracking_url": "https://sandbox.tiramizoo.com/orders/10018A5TBYKI4/tracking_status",
+  "tracking_code": "10018-A5TB-YKI4",
+  "cancellable": true,
+  "hazard_index": 0,
+  "city_identifier": "berlin",
   "signature": {
-    "requested": false,
     "url": null,
     "name": null
   },
   "pickup": {
+    "name": "Alice Icealay",
+    "phone_number": "+491234567890",
+    "email": "alice@icealay.de",
     "address_line": "Im Dol 1",
+    "city": "Berlin",
     "postal_code": "14195",
     "country_code": "de",
-    "name": "Alice Muller",
-    "phone_number": "+49000222333",
-    "email": "deliver@germany.de",
-    "after": "2023-04-06T10:00:00.000Z",
-    "before": "2023-04-06T12:00:00.000Z"
+    "after": "2023-04-06T12:00:00+02:00",
+    "before": "2023-04-06T12:00:00+02:00"
   },
   "delivery": {
+    "name": "Bob Obbay",
+    "phone_number": "+490987654321",
+    "email": "bob@obbay.de",
     "address_line": "Thujaweg 1",
+    "city": "Berlin",
     "postal_code": "12437",
     "country_code": "de",
-    "name": "Bob Obama",
-    "phone_number": "+49099999999",
-    "email": "bob@obama.de"
-    "after": "2023-04-06T14:00:00.000Z",
-    "before": "2023-04-06T15:00:00.000Z"
+    "after": "2023-04-06T13:30:00+02:00",
+    "before": "2023-04-06T13:30:00+02:00"
   },
   "packages": [
     {
-      "width": 48,
-      "height": 39,
-      "length": 40,
-      "weight": 20,
+      "width": 2,
+      "height": 8.2,
+      "length": 5,
+      "weight": 2,
       "quantity": 1,
       "description": "chunky bacon"
     }
-  ]
+  ],
 }
 {% endhighlight %}
+
+##### Try it yourself #####
+{% highlight bash %}
+curl -v https://api-sandbox.tiramizoo.com/v1/orders/a505ff78-67c5-4fbd-ab4f-a8db81f2c45a?api_token=5715edce6630959b0e9c5659d323eae4
+{% endhighlight %}
+
 
 #### Errors
 
 * `404 Not Found` - Order with provided UUID was not found
 * `401 Unauthorized` - Request requires authentication
 
-[Examples](/sandbox.html#bulk_orders)
+##### Try it yourself #####
+{% highlight bash %}
+curl -v https://api-sandbox.tiramizoo.com/v1/orders/WRONG_UUID?api_token=5715edce6630959b0e9c5659d323eae4
+{% endhighlight %}
