@@ -50,56 +50,6 @@ curl -H 'Content-Type: application/json' -d '{"pickup_postal_code": "14195","del
 }
 {% endhighlight %}
 
-## Bulk Orders
-
-All test requests require valid **API_TOKEN** ([https://sandbox.tiramizoo.com/dashboard/user/edit](https://sandbox.tiramizoo.com/dashboard/user/edit))
-
-* `401 Unauthorized` - API response when no or wrong API_TOKEN
-
-### Creation
-
-#### Successs response
-
-{% highlight bash %}
-curl -v -X POST -H 'Content-Type: application/json' -d '[{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "packages":[{"width":48, "height":39, "length":40, "weight":21, "quantity":1, "description": "metal bowl"}]}]' https://api-sandbox.tiramizoo.com/v1/bulk/orders?api_token=5715edce6630959b0e9c5659d323eae4
-{% endhighlight %}
-
-* `201 Created`
-
-{% highlight javascript %}
-[
-  {...}
-]
-{% endhighlight %}
-
-#### Error responses
-
-For every order if errors occure response syntax is the same:
-{% highlight bash %}
-[
-"field": the atribute on which error occured
-"code": error code
-"message": error full message
-]
-{% endhighlight %}
-
-Example request with invalid packages
-
-{% highlight bash %}
-curl -v -X POST -H 'Content-Type: application/json' -d '[{"description":"huge metal bowl", "pickup":{"address_line":"Wasser 15", "country_code":"de", "name":"Sender_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "delivery":{"address_line":"Bahnhof 32", "country_code":"de", "name":"Receiver_company", "phone_number":"123456", "postal_code":"14195", "after":"2023-12-14T11:30:00.000Z", "before":"2023-12-14T13:00:00.000Z"}, "packages":[{"width":48, "height":39, "length":40, "weight":40000, "quantity":1, "description": "metal bowl"}]}]' https://api-sandbox.tiramizoo.com/v1/bulk/orders?api_token=5715edce6630959b0e9c5659d323eae4
-{% endhighlight %}
-
-* `422 Unprocessable Entity`
-
-{% highlight javascript %}
-[
-  [{"field":"packages",
-  "code":"are too big",
-  "message":"Packages are too big"
-  }]
-]
-{% endhighlight %}
-
 ## Orders
 
 All test requests require valid **API_TOKEN** ([https://sandbox.tiramizoo.com/dashboard/user/edit](https://sandbox.tiramizoo.com/dashboard/user/edit))
