@@ -63,24 +63,11 @@ authentication:
 {% highlight bash %}
 curl -v -H 'Content-Type: application/json' -d '{
   "pickup_postal_code": "14195",
-  "delivery_postal_code": "12437",
-  "packages": [
-    {
-      "width": 2,
-      "height": 8.2,
-      "length": 5,
-      "weight": 2
-    }, {
-      "width": 20.5,
-      "height": 82,
-      "length": 50,
-      "weight": 7.9,
-      "quantity": 12
-    }
-  ]
+  "delivery_postal_code": "12437"
 }' "https://api-sandbox.tiramizoo.com/v1/quotes"
 {% endhighlight %}
 
+##### Try it yourself #####
 {% highlight bash %}
-curl -v -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","delivery_postal_code":"12437","packages":[{"width":2,"height":8.2,"length":5,"weight":2},{"width":20.5,"height":82,"length":50,"weight":7.9,"quantity":12}]}' "https://api-sandbox.tiramizoo.com/v1/quotes"
+curl -v -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","delivery_postal_code":"12437"}' "https://api-sandbox.tiramizoo.com/v1/quotes"
 {% endhighlight %}
