@@ -5,9 +5,8 @@ title: Service Areas
 
 ### List Service Areas
 
-The API returns postal codes of available areas.
-It also includes custom time windows when user authenticates via API token,
-otherwise includes default time windows.
+The API returns postal codes and time windows for next 7 days of covered areas.
+
 
 ```
 GET /v1/service_areas?api_token=API_TOKEN
@@ -40,15 +39,27 @@ Example response:
 ]
 {% endhighlight %}
 
+* `api_token` - API TOKEN is optional. When given system checks if user has custom time windows specified. If yes, user's custom time windows are returned otherwise fallbacks to default time windows.
+
+##### Try it yourself #####
+{% highlight bash %}
+curl -v https://api-sandbox.tiramizoo.com/v1/service_areas?api_token=5715edce6630959b0e9c5659d323eae4
+{% endhighlight %}
+
+{% highlight bash %}
+curl -v https://api-sandbox.tiramizoo.com/v1/service_areas
+{% endhighlight %}
+
 ### Show Service Area
 
-Same as list, but scoped to given postal code.
+Return area containing given postal code.
 
 ```
 GET /v1/service_areas/:postal_code?api_token=API_TOKEN
 ```
 
-postal_code - scope response to area having given postal code
+* `api_token` - API TOKEN is optional. When given system checks if user has custom time windows specified. If yes, user's custom time windows are returned otherwise fallbacks to default time windows.
+* `postal_code` - postal code which belongs to desired service area
 
 #### Response
 
@@ -74,6 +85,16 @@ Example response:
 }
 {% endhighlight %}
 
+##### Try it yourself #####
+{% highlight bash %}
+curl -v https://api-sandbox.tiramizoo.com/v1/service_areas/14195?api_token=5715edce6630959b0e9c5659d323eae4
+{% endhighlight %}
+
 #### Errors
 
 * `404 Not Found` - Area with given postal code is not supported
+
+##### Try it yourself #####
+{% highlight bash %}
+curl -v https://api-sandbox.tiramizoo.com/v1/service_areas/INVALID
+{% endhighlight %}
