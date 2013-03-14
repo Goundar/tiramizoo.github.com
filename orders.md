@@ -331,7 +331,7 @@ PUT /orders/:uuid?api_token=API_TOKEN
 * `ORDER_UUID` - replace with uuid of order in cancellable state. **Tip:** example for new order creation can be used
 
 {% highlight bash %}
-curl -v https://api-sandbox.tiramizoo.com/v1/orders/ORDER_UUID?api_token=5715edce6630959b0e9c5659d323eae4
+curl -v -X PUT -H 'Content-Type: application/json' -d '{"state" : "cancelled" }' https://api-sandbox.tiramizoo.com/v1/orders/ORDER_UUID?api_token=5715edce6630959b0e9c5659d323eae4
 {% endhighlight %}
 
 
@@ -355,5 +355,5 @@ curl -v https://api-sandbox.tiramizoo.com/v1/orders/ORDER_UUID?api_token=5715edc
 
 ##### Try it yourself #####
 {% highlight bash %}
-curl -v https://api-sandbox.tiramizoo.com/v1/orders/351d11d3-a001-4422-9ba2-7141b69126c0?api_token=5715edce6630959b0e9c5659d323eae4
+curl -v -X PUT -H 'Content-Type: application/json' -d '{"state" : "cancelled" }' https://api-sandbox.tiramizoo.com/v1/orders/351d11d3-a001-4422-9ba2-7141b69126c0?api_token=5715edce6630959b0e9c5659d323eae4
 {% endhighlight %}
