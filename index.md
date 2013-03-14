@@ -38,10 +38,11 @@ To simplify integration in some examples test user's API token is used
 
 When ready with integration please register an account on our production system at [tiramizoo.com](https://tiramizoo.com)
 
+
 ### Versioning
 
-
 All API urls have to be prefixed with API version, e.g. `/v1/orders`.
+
 
 ### Authentication
 
@@ -50,8 +51,8 @@ tokens as a URL param named `api_token`. You must keep the API token
 secret. You can always request a new API token.
 In case of providing wrong token, `401 Unauthorized` response will be returned.
 
-### Making Requests
 
+### Making Requests
 
 The following examples use the `curl` shell command and are rendered as a
 single copy-pastable line with a multiline representation for easy
