@@ -294,3 +294,66 @@ curl -v https://api-sandbox.tiramizoo.com/v1/orders/a505ff78-67c5-4fbd-ab4f-a8db
 {% highlight bash %}
 curl -v https://api-sandbox.tiramizoo.com/v1/orders/WRONG_UUID?api_token=5715edce6630959b0e9c5659d323eae4
 {% endhighlight %}
+
+
+### Cancel Order
+
+Only orders in cancellable state can be cancelled
+
+{% highlight javascript %}
+{
+  // ...
+  "cancellable": true
+  // ...
+}
+{% endhighlight %}
+
+
+```
+PUT /orders/:uuid?api_token=API_TOKEN
+```
+
+* `uuid` - uniqe order identifier
+
+{% highlight javascript %}
+{
+  "state": "cancelled"
+}
+{% endhighlight %}
+
+
+#### Response
+
+* `200 OK` - An Order was updated, response body contains order
+  representation.
+
+##### Try it yourself #####
+* `ORDER_UUID` - replace with uuid of order in cancellable state. **Tip:** example for new order creation can be used
+
+{% highlight bash %}
+curl -v https://api-sandbox.tiramizoo.com/v1/orders/ORDER_UUID?api_token=5715edce6630959b0e9c5659d323eae4
+{% endhighlight %}
+
+
+#### Errors
+
+* `422 Validation Error` - order is not in cancellable state.
+
+{% highlight javascript %}
+{
+  "message": "validation error",
+  "code": "validation_error",
+  "errors": [
+    {
+      "field": "state",
+      "code": "invalid",
+      "message": "State is invalid"
+    }
+  ]
+}
+{% endhighlight %}
+
+##### Try it yourself #####
+{% highlight bash %}
+curl -v https://api-sandbox.tiramizoo.com/v1/orders/351d11d3-a001-4422-9ba2-7141b69126c0?api_token=5715edce6630959b0e9c5659d323eae4
+{% endhighlight %}
