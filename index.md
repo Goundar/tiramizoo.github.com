@@ -71,3 +71,8 @@ curl -v -H 'Content-Type: application/json' -d '{
 {% highlight bash %}
 curl -v -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","delivery_postal_code":"12437"}' "https://api-sandbox.tiramizoo.com/v1/quotes"
 {% endhighlight %}
+
+
+### Airbrake support
+
+Additionaly you can provide your AIRBRAKE_API_KEY ([More about Airbrake](https://airbrakeapp.com/pages/home) ) on [www.tiramizoo.com/dashboard/development_settings/edit](www.tiramizoo.com/dashboard/development_settings/edit) and in a case web hook notification fails we will send you error notification to your airbrake account
