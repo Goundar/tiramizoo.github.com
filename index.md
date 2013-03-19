@@ -76,4 +76,4 @@ curl -v -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","d
 
 ### Airbrake support
 
-Additionaly you can provide your AIRBRAKE_API_KEY ([More about Airbrake](https://airbrake.io/pages/home) ) on [www.tiramizoo.com/dashboard/development_settings/edit](https://sandbox.tiramizoo.com/dashboard/development_settings/edit) and in a case web hook notification fails we will send you error notification to your airbrake account
+Additionaly you can provide your AIRBRAKE_API_KEY ([More about Airbrake](https://airbrake.io/pages/home) ) on [www.tiramizoo.com/dashboard/account/edit](https://sandbox.tiramizoo.com/dashboard/account/edit) and in a case web hook notification fails we will send you error notification to your airbrake account
