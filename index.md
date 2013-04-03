@@ -34,14 +34,14 @@ will need an API token. Please register an test account at [sandbox.tiramizoo.co
 with username and password or via facebook or google in order to get one. The API token
 can be found via Profile / Edit profile when logged in.
 
-To simplify integration in some examples test user's API token is used
+To simplify integration, in some examples the test user's API token is used
 
-When ready with integration please register an account on our production system at [tiramizoo.com](https://tiramizoo.com)
+When ready with the integration please register an account on our production system at [tiramizoo.com](https://tiramizoo.com)
 
 
 ### Versioning
 
-All API urls have to be prefixed with API version, e.g. `/v1/orders`.
+All API urls have to be prefixed with the API version, e.g. `/v1/orders`.
 
 
 ### Authentication
@@ -49,12 +49,12 @@ All API urls have to be prefixed with API version, e.g. `/v1/orders`.
 Some API calls require authentication with an API token. We accept API
 tokens as a URL param named `api_token`. You must keep the API token
 secret. You can always request a new API token.
-In case of providing wrong token, `401 Unauthorized` response will be returned.
+In case of providing a wrong token, an `401 Unauthorized` response will be returned.
 
 
 ### Making Requests
 
-The following examples use the `curl` shell command and are rendered as a
+The following examples use the `curl` shell command and is rendered as a
 single copy-pastable line with a multiline representation for easy
 reading.
 
@@ -68,7 +68,7 @@ curl -v -H 'Content-Type: application/json' -d '{
 }' "https://api-sandbox.tiramizoo.com/v1/quotes"
 {% endhighlight %}
 
-##### Try it yourself #####
+##### Try it #####
 {% highlight bash %}
 curl -v -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","delivery_postal_code":"12437"}' "https://api-sandbox.tiramizoo.com/v1/quotes"
 {% endhighlight %}
@@ -76,4 +76,4 @@ curl -v -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","d
 
 ### Airbrake support
 
-Additionaly you can provide your AIRBRAKE_API_KEY ([More about Airbrake](https://airbrake.io/pages/home) ) on [www.tiramizoo.com/dashboard/account/edit](https://sandbox.tiramizoo.com/dashboard/account/edit) and in a case web hook notification fails we will send you error notification to your airbrake account
+Additionaly you can provide your AIRBRAKE_API_KEY ([More about Airbrake](https://airbrake.io/pages/home) ) on [www.tiramizoo.com/dashboard/account/edit](https://sandbox.tiramizoo.com/dashboard/account/edit) and in a case a web hook notification fails we will send you an error notification to your airbrake account
