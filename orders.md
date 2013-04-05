@@ -180,7 +180,9 @@ Example response:
           "length": 5,
           "weight": 2,
           "quantity": 1,
-          "description": "chunky bacon"
+          "description": "chunky bacon",
+          "identifier": "3E39C50E40226436",
+          "qr_code_url": "/api/v1/qr_codes/3E39C50E40226436"
         }
       ],
     },
@@ -273,7 +275,9 @@ Example response:
       "length": 5,
       "weight": 2,
       "quantity": 1,
-      "description": "chunky bacon"
+      "description": "chunky bacon",
+      "identifier": "3E39C50E40226436",
+      "qr_code_url": "/api/v1/qr_codes/3E39C50E40226436"
     }
   ],
 }
