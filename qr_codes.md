@@ -1,13 +1,59 @@
 ---
 layout: page
-title: Qr Codes
+title: Package labels (QR codes)
 ---
 
-The Qr codes API provides a simple and quick way to obtain qr code for every package recoreded in a system. 
-To obtain qr code you just need to send request with package identifier  
+## Package labeling process
+
+#### Package identifier / QR code url
+
+During order creation process ([More](/orders.html)) each package is generated:
+
+- unique identification number ("identifier")     <- Information to be encoded in qr code
+- api url to obtain qr code image ("qr_code_url") <- Api url to obtain qr code image 
+
+![Generate identifier for a package](/assets/images/qr_step1.png)
+
+Example order creation response:
+
+{% highlight javascript %}
+{
+
+      "uuid": "a505ff78-67c5-4fbd-ab4f-a8db81f2c45a",
+      "state": "processing",
+      "created_at": "2013-03-12T11:13:46+01:00",
+      "description": "rubber chickens and chunky bacon",
+      ...
+      "packages": [
+        {
+          "width": 2,
+          "height": 8.2,
+          "length": 5,
+          "weight": 2,
+          "quantity": 1,
+          "description": "chunky bacon",
+          "identifier": "3E39C50E40226436",
+          "qr_code_url": "/api/v1/qr_codes/3E39C50E40226436"
+        }
+      ...
+}
+{% endhighlight %}
+
+#### QR code image generation
+
+User should label the packege with "identifier" encoded as QR code image ([More about QR codes](http://en.wikipedia.org/wiki/QR_code))
+##### It's highly recommended to use your own solution to generate QR code image for package labeling !!
+
+## QR code API
+
+The Qr codes API provides a simple and quick way to obtain qr code image for every package recoreded in a system. 
+**However it's highly recommended to use your own solution to generate QR code image for package labeling !!**
+
+![Generate qr code image for a package](/assets/images/qr_step2.png)
+
+To obtain qr code you just need to send request with package identifier 
 
 All requests require authentication (valid **API_TOKEN**  [More](/#api_tokens) )
-
 
 #### Get qr code
 
