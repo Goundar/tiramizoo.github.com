@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Quotes
+title: Quotes [Deprecated]
 ---
 
 The Quotes API provides an easy way to verify service availability and packages.
