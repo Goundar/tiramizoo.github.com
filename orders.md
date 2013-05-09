@@ -44,6 +44,7 @@ POST /orders?api_token=API_TOKEN
     "height": 8.2,
     "length": 5,
     "weight": 2,
+    "bundle": true,
     "description": "chunky bacon"
   }]
 }
@@ -61,7 +62,7 @@ POST /orders?api_token=API_TOKEN
   the pickup or delivery process or to specify a pickup code to let the courier prove his identity (e.g.
   "on pickup use identification code ABC" with a randomly generated code in place of ABC). (max length: 255 chars)
 * `packages` (`items` will be deprecated) - an array containing measurements of at least one package.
-  `width`, `height`, `length` are required dimensions of your package in cm and `weight` in kg. Optional `quantity` parameter contains a number of packages to deliver (default is 1).
+  `width`, `height`, `length` are required dimensions of your package in cm and `weight` in kg. Optional `quantity` parameter contains a number of packages to deliver (default is 1). Optional `bundle` parameter determines if package can be pack with others into user's package presets ([more about Packing Service](/packing_service.html))
 * `pickup`, `delivery` are required parameters cointaining addresses from where to pick your packages up and where to deliver them and information about people responsible for sending and receiving the delivery.
   * `name` - required string containing name (max length: 255 chars)
   * `phone_number` - required string containing phone number
