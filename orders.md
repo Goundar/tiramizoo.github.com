@@ -38,6 +38,7 @@ POST /orders?api_token=API_TOKEN
   },
   "description": "rubber chickens and chunky bacon",
   "web_hook_url": "http://api.myshop.com/deliveries/update_state",
+  "recipient_email": "email.for@feedback.com"
   "external_id": "123-456-789",
   "packages": [{
     "width": 2,
@@ -54,6 +55,7 @@ POST /orders?api_token=API_TOKEN
 * `web_hook_url` - an optional param with an URL to be notified when the
   order's state changes. Please check the [Order Status](/order_status.html)
   to learn more about web hooks.
+* `recipient_email` - an optional param, an email address used for feedback request. Feedback request is sent when order gets delivered
 * `external_id` - an optional param with custom id that enables connecting
   tiramizoo orders with your internal infrastructure. This id does not need
   to be unique and can have variable length. (max length: 255 chars)
@@ -83,7 +85,7 @@ Response body contains the same information as in [Order Show request](/orders.h
 
 ##### Try it yourself #####
 {% highlight bash %}
-curl -v -H 'Content-Type: application/json' -d '{"pickup":{"address_line":"Im Dol 1","postal_code":"14195","country_code":"de","name":"Alice Icealay","phone_number":"+491234567890","email":"alice@icealay.de","before":"2023-04-06T10:00:00.000Z","after":"2023-04-06T10:00:00.000Z"},"delivery":{"address_line":"Thujaweg 1","postal_code":"12437","country_code":"de","name":"Bob Obbay","phone_number":"+490987654321","email":"bob@obbay.de","before":"2023-04-06T11:30:00.000Z","after":"2023-04-06T11:30:00.000Z"},"description":"rubber chickens and chunky bacon","web_hook_url":"http://api.myshop.com/deliveries/update_state","external_id":"123-456-789","packages":[{"width":2,"height":8.2,"length":5,"weight":2,"description":"chunky bacon"}]}' "https://api-sandbox.tiramizoo.com/v1/orders?api_token=5715edce6630959b0e9c5659d323eae4"
+curl -v -H 'Content-Type: application/json' -d '{"pickup":{"address_line":"Im Dol 1","postal_code":"14195","country_code":"de","name":"Alice Icealay","phone_number":"+491234567890","email":"alice@icealay.de","before":"2023-04-06T10:00:00.000Z","after":"2023-04-06T10:00:00.000Z"},"delivery":{"address_line":"Thujaweg 1","postal_code":"12437","country_code":"de","name":"Bob Obbay","phone_number":"+490987654321","email":"bob@obbay.de","before":"2023-04-06T11:30:00.000Z","after":"2023-04-06T11:30:00.000Z"},"description":"rubber chickens and chunky bacon","web_hook_url":"http://api.myshop.com/deliveries/update_state","recipient_email":"email.for@feedback.com","external_id":"123-456-789","packages":[{"width":2,"height":8.2,"length":5,"weight":2,"description":"chunky bacon"}]}' "https://api-sandbox.tiramizoo.com/v1/orders?api_token=5715edce6630959b0e9c5659d323eae4"
 {% endhighlight %}
 
 #### Errors
@@ -142,6 +144,7 @@ Example response:
       "external_id": "123-456-789",
       "merge_field": null,
       "web_hook_url": "http://api.myshop.com/deliveries/update_state",
+      "recipient_email": "email.for@feedback.com",
       "packages_price": null,
       "tracking_url": "https://sandbox.tiramizoo.com/orders/10018A5TBYKI4/tracking_status",
       "tracking_code": "10018-A5TB-YKI4",
@@ -237,6 +240,7 @@ Example response:
   "external_id": "123-456-789",
   "merge_field": null,
   "web_hook_url": "http://api.myshop.com/deliveries/update_state",
+  "recipient_email": "email.for@feedback.com",
   "packages_price": null,
   "tracking_url": "https://sandbox.tiramizoo.com/orders/10018A5TBYKI4/tracking_status",
   "tracking_code": "10018-A5TB-YKI4",
