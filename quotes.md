@@ -1,10 +1,9 @@
 ---
 layout: page
-title: Quotes
+title: Quotes [Deprecated]
 ---
 
-The Quotes API provides an easy way of checking delivery prices in
-tiramizoo.
+The Quotes API provides an easy way to verify service availability and packages.
 
 ### Create quote
 
@@ -37,7 +36,7 @@ or to validate packages also:
       "height": 82,
       "length": 50,
       "weight": 7.9,
-      "quantity": 42
+      "quantity": 12
     }
   ]
 }
@@ -57,6 +56,11 @@ or to validate packages also:
 {}
 {% endhighlight %}
 
+##### Try it yourself #####
+{% highlight bash %}
+curl -v -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","delivery_postal_code":"12437","packages":[{"width":2,"height":8.2,"length":5,"weight":2},{"width":20.5,"height":82,"length":50,"weight":7.9,"quantity":12}]}' "https://api-sandbox.tiramizoo.com/v1/quotes"
+{% endhighlight %}
+
 #### Errors
 
 * `422 Validation Error` - some of required parameters are missing or invalid in the request. Please fix parameters and retry the request.
@@ -73,6 +77,11 @@ or to validate packages also:
     }
   ]
 }
+{% endhighlight %}
+
+##### Try it yourself #####
+{% highlight bash %}
+curl -v -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","delivery_postal_code":"INVALID","packages":[{"width":2,"height":8.2,"length":5,"weight":2},{"width":20.5,"height":82,"length":50,"weight":7.9,"quantity":12}]}' "https://api-sandbox.tiramizoo.com/v1/quotes"
 {% endhighlight %}
 
 [Examples](/sandbox.html#quotes)

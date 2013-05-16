@@ -9,11 +9,7 @@ programming against the public REST/JSON API. The API is "eat your own
 dogfood" style - tiramizoo uses it internally for the "book a courier"
 website, administration and plugins, so you can count that it is well maintained.
 
-For a detailed overview on how the workflow with tiramizoo.com looks like, take a look at the
-PDF Guide at [our retailers page](https://www.tiramizoo.com/retailers). Note: The guide is
-beeing worked on and a little bit outdated. It only contains information about the delivery
-workflow with an offer process. This is not the case anymore - we now directly accept deliveries
-without creating an offer first.
+For a detailed overview on how the workflow with tiramizoo.com looks like, please go to [our website](https://www.tiramizoo.com).
 
 For testing purposes use the [tiramizoo.com sandbox](/sandbox.html). It's a full copy of the production environment
 except no delivery you trigger there is dispatched to our couriers.
@@ -33,28 +29,32 @@ If you encounter a problem when using the API, please
 
 ### API Tokens
 
-
 For accessing the API - either via a plugin or via the API directly - you
-will need an API token. Please register an account at [tiramizoo.com](https://www.tiramizoo.com)
-with username and password or via facebook in order to get one. The API token
+will need an API token. Please register an test account at [sandbox.tiramizoo.com](https://sandbox.tiramizoo.com)
+with username and password or via facebook or google in order to get one. The API token
 can be found via Profile / Edit profile when logged in.
+
+To simplify integration, in some examples the test user's API token is used
+
+When ready with the integration please register an account on our production system at [tiramizoo.com](https://tiramizoo.com)
+
 
 ### Versioning
 
+All API urls have to be prefixed with the API version, e.g. `/v1/orders`.
 
-All API urls have to be prefixed with API version, e.g. `/v1/quotes`.
 
 ### Authentication
 
 Some API calls require authentication with an API token. We accept API
 tokens as a URL param named `api_token`. You must keep the API token
 secret. You can always request a new API token.
-In case of providing wrong token, `401 Unauthorized` response will be returned.
+In case of providing a wrong token, an `401 Unauthorized` response will be returned.
+
 
 ### Making Requests
 
-
-The following examples use the `curl` shell command and are rendered as a
+The following examples use the `curl` shell command and is rendered as a
 single copy-pastable line with a multiline representation for easy
 reading.
 
@@ -62,26 +62,18 @@ A minimal `POST` request to the **quotes** resource which doesn't require
 authentication:
 
 {% highlight bash %}
-curl -H 'Content-Type: application/json' -d '{
+curl -v -H 'Content-Type: application/json' -d '{
   "pickup_postal_code": "14195",
-  "delivery_postal_code": "12437",
-  "items": [
-    {
-      "width": 2,
-      "height": 8.2,
-      "length": 5,
-      "weight": 2
-    }, {
-      "width": 20.5,
-      "height": 82,
-      "length": 50,
-      "weight": 7.9,
-      "quantity": 42
-    }
-  ]
-}' "https://api.tiramizoo.com/v1/quotes"
+  "delivery_postal_code": "12437"
+}' "https://api-sandbox.tiramizoo.com/v1/quotes"
 {% endhighlight %}
 
+##### Try it #####
 {% highlight bash %}
-curl -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","delivery_postal_code":"12437","items":[{"width":2,"height":8.2,"length":5,"weight":2},{"width":20.5,"height":82,"length":50,"weight":7.9,"quantity":42}]}' "https://api.tiramizoo.com/v1/quotes"
+curl -v -H 'Content-Type: application/json' -d '{"pickup_postal_code":"14195","delivery_postal_code":"12437"}' "https://api-sandbox.tiramizoo.com/v1/quotes"
 {% endhighlight %}
+
+
+### Airbrake support
+
+Additionaly you can provide your AIRBRAKE_API_KEY ([More about Airbrake](https://airbrake.io/pages/home) ) on [www.tiramizoo.com/dashboard/account/edit](https://sandbox.tiramizoo.com/dashboard/account/edit) and in a case a web hook notification fails we will send you an error notification to your airbrake account
