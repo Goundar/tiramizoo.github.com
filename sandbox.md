@@ -13,40 +13,6 @@ Please take in mind that all records on the sandbox including account data are v
 
 The sandbox has same service availability as production.
 
-## Quotes
-
-{% highlight bash %}
-curl -H 'Content-Type: application/json' -d '{"pickup_postal_code": "14195","delivery_postal_code": "14195"}' https://api-sandbox.tiramizoo.com/v1/quotes
-{% endhighlight %}
-
-#### Successs response
-
-* `200 OK`
-
-{% highlight javascript %}
-{}
-{% endhighlight %}
-
-#### Error response when package is too big
-
-{% highlight bash %}
-curl -H 'Content-Type: application/json' -d '{"pickup_postal_code": "14195","delivery_postal_code": "14195","packages":[{"width":42,"height":59,"length":3,"weight":50000}]}' https://api-sandbox.tiramizoo.com/v1/quotes
-{% endhighlight %}
-
-* `422 Unprocessable Entity`
-
-{% highlight javascript %}
-{
-  "code": "validation_error",
-  "message": "validation error",
-  "errors": [{
-    "field": "packages",
-    "code": "dont_fit",
-    "message": "Items are too big"
-  }]
-}
-{% endhighlight %}
-
 ## Orders
 
 ### Creation
