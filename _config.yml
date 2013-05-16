@@ -3,6 +3,4 @@
 permalink: /:year/:month/:day/:title
 
 exclude: [".rvmrc", "README.md", "CNAME", "Gemfile", "Gemfile.lock"]
-auto: true
 pygments: true
-server: true
