@@ -114,7 +114,7 @@ POST /orders?api_token=API_TOKEN
 }
 {% endhighlight %}
 
-*\*INFO: please notice that package 3 is not repacked even though it has `bundle` parameter in request. In case when system is not able to find package preset big enough to fit the package `unpackable` parameter is added.
+*\*INFO: please notice that package 3 is not repacked even though it has `bundle` parameter in request. In case when system is not able to find package preset big enough to fit the package `unpackable` parameter is added.*
 
 ##### Try it yourself #####
 {% highlight bash %}
