@@ -115,13 +115,14 @@ curl -v -H 'Content-Type: application/json' -d '{"pickup":{"address_line":"Im Do
 ### List Orders
 
 ```
-GET /orders?external_id=EXTERNAL_ID&page=PAGE&api_token=API_TOKEN
+GET /orders?external_id=EXTERNAL_ID&page=PAGE&per_page=PER_PAGE&api_token=API_TOKEN
 ```
 
 external_id - an optional param with custom id that enables connecting tiramizoo orders with your internal infrastructure. This id does not need
   to be unique and can have variable length.
 
-page - an optional param (by default first page is returned)
+page     - an optional param (by default first page is returned)
+per_page - an optional param (by default 100 records are returned. Max number allowed is 1000)
 
 #### Response
 
@@ -133,7 +134,7 @@ Example response:
 {
   "page": 1,
   "total_pages": 1,
-  "per_page": 25,
+  "per_page": 100,
   "orders": [
     {
       "uuid": "a505ff78-67c5-4fbd-ab4f-a8db81f2c45a",
