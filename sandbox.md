@@ -13,40 +13,6 @@ Please take in mind that all records on the sandbox including account data are v
 
 The sandbox has same service availability as production.
 
-## Quotes
-
-{% highlight bash %}
-curl -H 'Content-Type: application/json' -d '{"pickup_postal_code": "14195","delivery_postal_code": "14195"}' https://api-sandbox.tiramizoo.com/v1/quotes
-{% endhighlight %}
-
-#### Successs response
-
-* `200 OK`
-
-{% highlight javascript %}
-{}
-{% endhighlight %}
-
-#### Error response when package is too big
-
-{% highlight bash %}
-curl -H 'Content-Type: application/json' -d '{"pickup_postal_code": "14195","delivery_postal_code": "14195","packages":[{"width":42,"height":59,"length":3,"weight":50000}]}' https://api-sandbox.tiramizoo.com/v1/quotes
-{% endhighlight %}
-
-* `422 Unprocessable Entity`
-
-{% highlight javascript %}
-{
-  "code": "validation_error",
-  "message": "validation error",
-  "errors": [{
-    "field": "packages",
-    "code": "dont_fit",
-    "message": "Items are too big"
-  }]
-}
-{% endhighlight %}
-
 ## Orders
 
 ### Creation
@@ -260,8 +226,9 @@ curl -v -H 'Content-Type: application/json' https://api-sandbox.tiramizoo.com/v1
 external_id - an optional param with custom id that enables connecting tiramizoo orders with your internal infrastructure. This id does not need
 
 page - an optional param (by default first page is returned)
+per_page - an optional param (by default 100 records are returned. Max number allowed is 1000)
 
-Your orders collection is paginated, one page returns 25 orders, i.e. to obtain 3-th page:
+Your orders collection is paginated, i.e. to obtain 3-th page:
 
 {% highlight bash %}
 curl -v -H 'Content-Type: application/json' https://api-sandbox.tiramizoo.com/v1/orders?page=3&api_token=API_TOKEN
@@ -275,7 +242,7 @@ Example response:
 {
   "page": 3,
   "total_pages": 5,
-  "per_page": 25,
+  "per_page": 100,
   "orders": [{
     "uuid": "71e7acb2-3ed2-4137-ad62-446fb44f4299",
     "state": "processing",
