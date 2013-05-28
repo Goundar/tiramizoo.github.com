@@ -4,7 +4,7 @@ title: Orders
 ---
 
 The orders API provides a simple and quick way of order creation.
-You need to specify the time when pickup and delivery should take place by giving a time window with `before`
+You need to specify the time when delivery should take place by giving a time window with `before`
 and `after`.
 
 All requests require authentication (valid **API_TOKEN**  [More](/#api_tokens) )
@@ -23,7 +23,6 @@ POST /orders?api_token=API_TOKEN
     "name": "Alice Icealay",
     "phone_number": "+491234567890",
     "email": "alice@icealay.de",
-    "before": "2023-04-06T10:00:00.000Z",
     "after": "2023-04-06T10:00:00.000Z"
   },
   "delivery": {
@@ -73,7 +72,9 @@ POST /orders?api_token=API_TOKEN
   * `postal_code` - required string containing postal code
   * `country_code` - required string containing country code
 
-* `pickup` and `delivery` `before` and  `after` - required date and time defining pickup window provided as UTC in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. Distance between `delivery[before]` and `pickup[after]` must be at least 90 minutes but not longer than 6 hours.
+* `delivery` `before` and `after` required date and time defining time window provided as UTC in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. Valid values can be retrieved from [Service Areas API](/servie_areas.html). If different values are provied they will be changed to first matching by `delivery` `before`.
+
+* `pickup` `after` optional date and time defining when package is ready for pickup
 
 #### Response
 
