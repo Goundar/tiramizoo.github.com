@@ -38,7 +38,8 @@ Please register a test account at [sandbox.tiramizoo.com](https://sandbox.tirami
 with username and password or via facebook or google in order to get one. The API token
 can be found via Profile / Edit profile when logged in.
 
-When ready with the integration please register an account on our production system at [tiramizoo.com](https://tiramizoo.com)
+When ready with the integration please register an account on our production system at [tiramizoo.com](https://tiramizoo.com).
+
 To simplify integration, in some examples the test user's API token is used.
 
 ### Versioning
