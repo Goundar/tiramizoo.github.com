@@ -30,14 +30,16 @@ If you encounter a problem when using the API, please
 ### API Tokens
 
 For accessing the API - either via a plugin or via the API directly - you
-will need an API token. Please register an test account at [sandbox.tiramizoo.com](https://sandbox.tiramizoo.com)
+will need an API token.
+
+The API token on the sandbox and production systems is different - you will need to register separate accounts on both systems.
+
+Please register a test account at [sandbox.tiramizoo.com](https://sandbox.tiramizoo.com)
 with username and password or via facebook or google in order to get one. The API token
 can be found via Profile / Edit profile when logged in.
 
-To simplify integration, in some examples the test user's API token is used
-
 When ready with the integration please register an account on our production system at [tiramizoo.com](https://tiramizoo.com)
-
+To simplify integration, in some examples the test user's API token is used.
 
 ### Versioning
 
