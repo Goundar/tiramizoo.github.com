@@ -3,16 +3,18 @@ layout: page
 title: Packing Service
 ---
 
-Tiramizoo offers a packing service for when creating orders. 
+Tiramizoo offers a packing service when creating orders. 
 
 The reasoning behind this is that tiramizoo.com will deliver and charge based on the number and size of packages sent. Therefore it is vital to submit the correct number of packages to tiramizoo.
+
+To help our customers with packing, we provide a tool that will try to pack products into customizable packages.
 
 There are two different settings influencing the pricing and packing: 
 
 * The account's package sizes contain dimensions, weights and prices that were negotiated in the contracts. Those are set up by your key account manager and can not be changed by the account owner.
 * The account's package presets contain user specific package sizes and dimensions that can be given a special name. Those presets will be used in the user interface and also be used to pack products if the packing service is used. The price for the package presets will be taken from the smallest package size where it fits into. Package presets can be customized by the account owner in the user interface.
 
-Just mark packages (in reality probably products) which are supposed to be repacked and the system will pack them into the account's package presets and return the packing information.
+Just mark packages (in reality probably single products) which are supposed to be repacked and the system will pack them into the account's package presets and return the packing information.
 
 We will then charge according to those packages, but the courier will also only expect to get those packages to deliver, so make sure they match.
 
