@@ -72,7 +72,7 @@ POST /orders?api_token=API_TOKEN
   * `postal_code` - required string containing postal code
   * `country_code` - required string containing country code
 
-* `delivery` `before` and `after` required date and time defining time window provided as UTC in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. Valid values can be retrieved from [Service Areas API](/service_areas.html). If different values are provied they will be changed to first matching by `delivery` `before`.
+* `delivery` `before` and `after` required date and time defining time window provided as UTC in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. Valid values can be retrieved from [Service Areas API](/service_areas.html). If different values are provied they will be changed to first matching by `delivery` `before`. Information about the change will be logged in `courier_information` field.
 
 * `pickup` `after` optional date and time defining when package is ready for pickup
 
