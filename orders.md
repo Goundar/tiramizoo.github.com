@@ -73,6 +73,9 @@ POST /orders?api_token=API_TOKEN
   * `country_code` - required string containing country code
 
 * `delivery` `before` and `after` required date and time defining time window provided as UTC in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. Valid values can be retrieved from [Service Areas API](/service_areas.html). If different values are provied they will be changed to first matching by `delivery` `before`. Information about the change will be logged in `courier_information` field.
+To deliver as fast as possible using **standard delivery**, set `delivery` `after` to 1 hour from now and
+`delivery` `before` to 3 hours from now.
+To delivery as fast as possible using **express delivery**, set `delivery` `after` to now and `delivery` `before` to 2 hours from now.
 
 * `pickup` `after` optional date and time defining when package is ready for pickup
 
