@@ -42,11 +42,10 @@ The QR codes API provides a simple way to generate QR code label for given ident
 #### Get QR code ####
 
 ```
-GET /qr_codes/:identifier?api_token=API_TOKEN
+GET /qr_codes/:identifier
 ```
 
 * `identifier` - Package identifier generated on [order creation process](/orders.html#show_order)
-* `api_token` - Request require api_token [More](/#api_tokens)
 
 #### Response ####
 
@@ -57,5 +56,5 @@ QR code image in 'png' format
 ##### Try it yourself #####
 
 {% highlight bash %}
-wget https://api-sandbox.tiramizoo.com/v1/qr_codes/3E39C50E40226436?api_token=5715edce6630959b0e9c5659d323eae4
+wget https://api-sandbox.tiramizoo.com/v1/qr_codes/3E39C50E40226436
 {% endhighlight %}
