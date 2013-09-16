@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Package labeling process
+title: Package labelling process
 ---
 
 On [order creation process](/orders.html) tiramizoo service generates unique identifier for each package.
