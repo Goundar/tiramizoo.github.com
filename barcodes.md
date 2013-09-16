@@ -22,7 +22,7 @@ On [order creation process](/orders.html) tiramizoo service generates unique ide
     "barcode:": {
       "symbology": "Code 128",
       "data": "3E39C50E40226436",
-      "url": "https://api.tiramizoo.com/v1/barcodes/3E39C50E40226436.png"
+      "url": "https://api-sandbox.tiramizoo.com/v1/barcodes/3E39C50E40226436.png"
     }
   },
   ...
