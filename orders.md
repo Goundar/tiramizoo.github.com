@@ -191,7 +191,11 @@ Example response:
           "quantity": 1,
           "description": "chunky bacon",
           "identifier": "3E39C50E40226436",
-          "qr_code_url": "/api/v1/qr_codes/3E39C50E40226436"
+          "barcode": {
+            "symbology": "Code 128",
+            "data": "3E39C50E40226436",
+            "url": "https://api-sandbox.tiramizoo.com/v1/barcodes/3E39C50E40226436.png"
+          }
         }
       ],
     },
@@ -287,7 +291,11 @@ Example response:
       "quantity": 1,
       "description": "chunky bacon",
       "identifier": "3E39C50E40226436",
-      "qr_code_url": "/api/v1/qr_codes/3E39C50E40226436"
+      "barcode": {
+        "symbology": "Code 128",
+        "data": "3E39C50E40226436",
+        "url": "https://api-sandbox.tiramizoo.com/v1/barcodes/3E39C50E40226436.png"
+      }
     }
   ],
 }

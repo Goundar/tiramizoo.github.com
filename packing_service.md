@@ -3,13 +3,13 @@ layout: page
 title: Packing Service
 ---
 
-Tiramizoo offers a packing service when creating orders. 
+Tiramizoo offers a packing service when creating orders.
 
 The reasoning behind this is that tiramizoo.com will deliver and charge based on the number and size of packages sent. Therefore it is vital to submit the correct number of packages to tiramizoo.
 
 To help our customers with packing, we provide a tool that will try to pack products into customizable packages.
 
-There are two different settings influencing the pricing and packing: 
+There are two different settings influencing the pricing and packing:
 
 * The account's package sizes contain dimensions, weights and prices that were negotiated in the contracts. Those are set up by your key account manager and can not be changed by the account owner.
 * The account's package presets contain user specific package sizes and dimensions that can be given a special name. Those presets will be used in the user interface and also be used to pack products if the packing service is used. The price for the package presets will be taken from the smallest package size where it fits into. Package presets can be customized by the account owner in the user interface.
@@ -81,7 +81,11 @@ POST /orders?api_token=API_TOKEN
       "quantity": 1,
       "description": "Package 4 to NOT be repacked",
       "identifier": "43906409963AAFC1",
-      "qr_code_url": "/api/v1/qr_codes/43906409963AAFC1"
+      "barcode": {
+        "symbology": "Code 128",
+        "data": "43906409963AAFC1",
+        "url": "https://api-sandbox.tiramizoo.com/v1/barcodes/43906409963AAFC1.png"
+      }
     },
     {
       "width": 2.0,
@@ -91,7 +95,11 @@ POST /orders?api_token=API_TOKEN
       "quantity": 1,
       "description": "Package 3 to be repacked, heavy",
       "identifier": "4D13BB4F4C64267F",
-      "qr_code_url": "/api/v1/qr_codes/4D13BB4F4C64267F",
+      "barcode": {
+        "symbology": "Code 128",
+        "data": "4D13BB4F4C64267F",
+        "url": "https://api-sandbox.tiramizoo.com/v1/barcodes/4D13BB4F4C64267F.png"
+      },
       "unpackable": true
     },
     {
@@ -102,7 +110,11 @@ POST /orders?api_token=API_TOKEN
       "quantity": 1,
       "description": "Medium package",
       "identifier": "E1CCBE8E8EB1AEBB",
-      "qr_code_url": "/api/v1/qr_codes/E1CCBE8E8EB1AEBB",
+      "barcode": {
+        "symbology": "Code 128",
+        "data": "E1CCBE8E8EB1AEBB",
+        "url": "https://api-sandbox.tiramizoo.com/v1/barcodes/E1CCBE8E8EB1AEBB.png"
+      },
       "packages_inside": [
         {
           "width": 2,
