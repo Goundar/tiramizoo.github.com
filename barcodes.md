@@ -5,7 +5,7 @@ title: Package labelling process
 
 On [order creation process](/orders.html) tiramizoo service generates unique identifier for each package.
 
-![Generate identifier for a package](/assets/images/qr_step1.png)
+![Generate identifier for a package](/assets/images/barcodes.png)
 
 
 ##### Packages representation #####
