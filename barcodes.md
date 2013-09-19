@@ -35,4 +35,4 @@ On [order creation process](/orders.html) tiramizoo service generates unique ide
 
 
 ##### Example barcode #####
-![Barcode](/assets/images/3E39C50E40226436.png)
+![Barcode](https://www.tiramizoo.com/api/v1/barcodes/3E39C50E40226436.png)
