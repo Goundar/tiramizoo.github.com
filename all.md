@@ -1333,6 +1333,3 @@ On this page you can see how the real shop integration with Tiramizoo looks like
 ### Step 4 - User confirm order
 
 ![User confirm order](/assets/images/step4.png)
-
-
-
