@@ -54,6 +54,6 @@ ul li ul li {
     background: none;
   }
   .highlight, pre {
-
+    page-break-inside: avoid;
   }
 }
