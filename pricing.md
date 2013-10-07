@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Pricing
+title: Package Pricing
 ---
 
 ### Retrieve package prices
