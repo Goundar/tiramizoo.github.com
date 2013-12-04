@@ -40,5 +40,5 @@ Data supplied is not valid. See detailed errors in the response.
 ### 503 Service Unavailable
 Application is offline for maintenance.
 
-### Internal Server Error
+### 500 Internal Server Error
 Server encountered an unexpected condition which prevented it from processing the request.
