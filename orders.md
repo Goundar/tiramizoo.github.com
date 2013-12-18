@@ -136,14 +136,20 @@ Example response:
 
 {% highlight javascript %}
 {
-  "page": 1,
-  "total_pages": 1,
-  "per_page": 100,
+  "meta": {
+    page": 1,
+    "total_pages": 1,
+    "per_page": 100
+  },
   "orders": [
     {
       "uuid": "a505ff78-67c5-4fbd-ab4f-a8db81f2c45a",
       "state": "processing",
       "created_at": "2013-03-12T11:13:46+01:00",
+      "dispatched_at": "2013-03-12T11:13:46+01:00",
+      "picked_up_at": "2013-03-12T12:13:46+01:00",
+      "delivered_at": "2013-03-12T13:13:46+01:00",
+      "cancelled_at": null,
       "description": "rubber chickens and chunky bacon",
       "courier_information": null,
       "external_id": "123-456-789",
